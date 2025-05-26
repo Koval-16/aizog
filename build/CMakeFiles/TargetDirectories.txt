@@ -1,0 +1,3 @@
+C:/Users/kuba/CLionProjects/aizog/build/CMakeFiles/aizog.dir
+C:/Users/kuba/CLionProjects/aizog/build/CMakeFiles/edit_cache.dir
+C:/Users/kuba/CLionProjects/aizog/build/CMakeFiles/rebuild_cache.dir
