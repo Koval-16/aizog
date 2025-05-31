@@ -4,32 +4,12 @@ CMakeFiles/aizog.dir/RandomHandler.cpp.obj: \
  C:\Users\kuba\CLionProjects\aizog\Graph.h \
  C:\Users\kuba\CLionProjects\aizog\EdgeList.h \
  C:\Users\kuba\CLionProjects\aizog\Edge.h \
- C:\Users\kuba\CLionProjects\aizog\GraphAdjacency.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/cstdlib \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/iostream \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/requires_hosted.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/os_defines.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/pstl/pstl_config.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/stdlib.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/corecrt.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/vadefs.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
- C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/limits.h \
- C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/syslimits.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/limits.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/stdlib.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/malloc.h \
- C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/mm_malloc.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/errno.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/std_abs.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/iostream \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/requires_hosted.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/ostream \
  C:/Program\ Files/mingw64/include/c++/14.2.0/ios \
  C:/Program\ Files/mingw64/include/c++/14.2.0/iosfwd \
@@ -38,7 +18,14 @@ CMakeFiles/aizog.dir/RandomHandler.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/postypes.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/cwchar \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/wchar.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/corecrt.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/vadefs.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_stat64.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
@@ -51,6 +38,7 @@ CMakeFiles/aizog.dir/RandomHandler.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/cxxabi_init_exception.h \
  C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stddef.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/stddef.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/typeinfo \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/hash_bytes.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/new \
@@ -71,9 +59,13 @@ CMakeFiles/aizog.dir/RandomHandler.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/gthr.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/gthr-default.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/pthread.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/errno.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sys/types.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/process.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/corecrt_startup.h \
+ C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/limits.h \
+ C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/syslimits.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/limits.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/signal.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/pthread_signal.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/time.h \
@@ -122,6 +114,13 @@ CMakeFiles/aizog.dir/RandomHandler.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/functional_hash.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/string_view.tcc \
  C:/Program\ Files/mingw64/include/c++/14.2.0/ext/string_conversions.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/cstdlib \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/stdlib.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/stdlib.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/malloc.h \
+ C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/mm_malloc.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/std_abs.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/cstdio \
  C:/Program\ Files/mingw64/include/c++/14.2.0/cerrno \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/charconv.h \
@@ -148,4 +147,5 @@ CMakeFiles/aizog.dir/RandomHandler.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/basic_ios.tcc \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/ostream.tcc \
  C:/Program\ Files/mingw64/include/c++/14.2.0/istream \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/istream.tcc
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/istream.tcc \
+ C:\Users\kuba\CLionProjects\aizog\GraphAdjacency.h

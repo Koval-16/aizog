@@ -19,6 +19,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/aizog.dir/Main.cpp.obj.d"
   "CMakeFiles/aizog.dir/RandomHandler.cpp.obj"
   "CMakeFiles/aizog.dir/RandomHandler.cpp.obj.d"
+  "CMakeFiles/aizog.dir/ShortestPath.cpp.obj"
+  "CMakeFiles/aizog.dir/ShortestPath.cpp.obj.d"
   "CMakeFiles/aizog.dir/Timer.cpp.obj"
   "CMakeFiles/aizog.dir/Timer.cpp.obj.d"
   "aizog.exe"

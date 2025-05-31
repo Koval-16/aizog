@@ -368,6 +368,30 @@ RandomHandler.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\aizog.dir\build.make CMakeFiles/aizog.dir/RandomHandler.cpp.s
 .PHONY : RandomHandler.cpp.s
 
+ShortestPath.obj: ShortestPath.cpp.obj
+.PHONY : ShortestPath.obj
+
+# target to build an object file
+ShortestPath.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\aizog.dir\build.make CMakeFiles/aizog.dir/ShortestPath.cpp.obj
+.PHONY : ShortestPath.cpp.obj
+
+ShortestPath.i: ShortestPath.cpp.i
+.PHONY : ShortestPath.i
+
+# target to preprocess a source file
+ShortestPath.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\aizog.dir\build.make CMakeFiles/aizog.dir/ShortestPath.cpp.i
+.PHONY : ShortestPath.cpp.i
+
+ShortestPath.s: ShortestPath.cpp.s
+.PHONY : ShortestPath.s
+
+# target to generate assembly for a file
+ShortestPath.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\aizog.dir\build.make CMakeFiles/aizog.dir/ShortestPath.cpp.s
+.PHONY : ShortestPath.cpp.s
+
 Timer.obj: Timer.cpp.obj
 .PHONY : Timer.obj
 
@@ -431,6 +455,9 @@ help:
 	@echo ... RandomHandler.obj
 	@echo ... RandomHandler.i
 	@echo ... RandomHandler.s
+	@echo ... ShortestPath.obj
+	@echo ... ShortestPath.i
+	@echo ... ShortestPath.s
 	@echo ... Timer.obj
 	@echo ... Timer.i
 	@echo ... Timer.s

@@ -18,6 +18,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/kuba/CLionProjects/aizog/MST.cpp" "CMakeFiles/aizog.dir/MST.cpp.obj" "gcc" "CMakeFiles/aizog.dir/MST.cpp.obj.d"
   "C:/Users/kuba/CLionProjects/aizog/Main.cpp" "CMakeFiles/aizog.dir/Main.cpp.obj" "gcc" "CMakeFiles/aizog.dir/Main.cpp.obj.d"
   "C:/Users/kuba/CLionProjects/aizog/RandomHandler.cpp" "CMakeFiles/aizog.dir/RandomHandler.cpp.obj" "gcc" "CMakeFiles/aizog.dir/RandomHandler.cpp.obj.d"
+  "C:/Users/kuba/CLionProjects/aizog/ShortestPath.cpp" "CMakeFiles/aizog.dir/ShortestPath.cpp.obj" "gcc" "CMakeFiles/aizog.dir/ShortestPath.cpp.obj.d"
   "C:/Users/kuba/CLionProjects/aizog/Timer.cpp" "CMakeFiles/aizog.dir/Timer.cpp.obj" "gcc" "CMakeFiles/aizog.dir/Timer.cpp.obj.d"
   )
 
