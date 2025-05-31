@@ -4,6 +4,7 @@
 
 #include "GraphList.h"
 #include <iostream>
+#include <sstream>
 
 GraphList::~GraphList() {
     for (int i = 0; i < V; i++) delete[] elist[i];
@@ -45,15 +46,17 @@ void GraphList::add_edge(int v1, int v2, int wage, bool directed) {
     edge_count++;
 }
 
-void GraphList::print() {
-    std::cout << "Lista nastepnikow" << std::endl;
+std::string GraphList::toString() {
+    std::ostringstream out;
+    out << "Lista nastepnikow" << std::endl;
     for(int i=0; i<V; i++){
-        std::cout << i << ": ";
+        out << i << ": ";
         for(int j=0; j<amount[i]; j++){
-            std::cout << elist[i][j].get_target_node() << ":" << elist[i][j].get_wage() << "\t";
+            out << elist[i][j].get_target_node() << ":" << elist[i][j].get_wage() << "\t";
         }
-        std::cout << "\n";
+        out << "\n";
     }
+    return out.str();
 }
 
 void GraphList::get_all_edges(EdgeList &list, bool directed) {
@@ -88,13 +91,11 @@ int GraphList::get_edges_number() {
 }
 
 void GraphList::get_edges_from_node(EdgeList &list, int node, bool directed) {
-    for(int j=0; j<amount[node]; j++){
+    for (int j = 0; j < amount[node]; j++) {
         Edge edge = elist[node][j];
-        if(!(!directed && edge.get_target_node()<node)){
-            int v1 = node;
-            int v2 = edge.get_target_node();
-            int wage = edge.get_wage();
-            list.add_edge(v1,v2,wage);
-        }
+        int v1 = node;
+        int v2 = edge.get_target_node();
+        int wage = edge.get_wage();
+        list.add_edge(v1, v2, wage);
     }
 }

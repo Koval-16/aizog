@@ -1,10 +1,12 @@
 #include <iostream>
+#include <sstream>
 #include "Graph.h"
 #include "FileHandler.h"
 #include "Main.h"
 #include "Timer.h"
 #include "RandomHandler.h"
 #include "MST.h"
+#include "ShortestPath.h"
 
 #include "GraphAdjacency.h"
 #include "GraphIncidence.h"
@@ -14,20 +16,6 @@ int main(int arg_number, char* arg_values[]) {
     srand(time(0));
     Main::start(arg_number,arg_values);
     return 0;
-    // FILE MODE:
-    // - problem: MST, Shortest Path
-    // - algorithm: Prim/Kruskal, Dijkstr/Bellman
-    // - input
-    // - output
-
-    // TEST MODE:
-    // - problem: MST, SHortest Path
-    // - algorithm: Prim/Kruskal, Dijkstr/Bellman
-    // - number of nodes
-    // - density
-    // - iterations
-    // - output for results
-    // - start node and end node
 }
 
 void Main::start(int arg_number, char* arg_values[]){
@@ -74,46 +62,62 @@ void Main::file_mode(int problem, int algorithm, std::string input, std::string 
         FileHandler::read_file(input,graph_inc,true);
         FileHandler::read_file(input,graph_list,true);
     }
-    graph_adj.print();
-    std::cout << "\n";
-    graph_inc.print();
-    std::cout << "\n";
-    graph_list.print();
-    std::cout << "\n";
-    if(problem==0){
-        if(algorithm==0){
-            std::cout << MST::prim(graph_adj,0) << std::endl;
-            std::cout << MST::prim(graph_inc,0) << std::endl;
-            std::cout << MST::prim(graph_list,0) << std::endl;
-        }
-        else if(algorithm==1){
-            std::cout << MST::kruskal(graph_adj,0) << std::endl;
-            std::cout << MST::kruskal(graph_inc,0) << std::endl;
-            std::cout << MST::kruskal(graph_list,0) << std::endl;
-        }
-    }
-    else if(problem==1){
-        if(algorithm==0){
-            //ShortestPath::dijkstra(graph);
-        }
-        else if(algorithm==1){
-            //ShortestPath::bellman(graph);
-        }
-    }
+
+    singlefile(graph_inc,problem,algorithm,output);
+    singlefile(graph_list,problem,algorithm,output);
+    singlefile(graph_adj,problem,algorithm,output);
 }
 
 void Main::test_mode(int problem, int algorithm, int number, float density, int iterations, std::string output) {
+    int id=0;
     for(int i=0; i<iterations; i++){
         GraphAdjacency graph_adj;
         GraphIncidence graph_inc;
         GraphList graph_list;
-        if(problem==0) RandomHandler::generate_graph(number,density,graph_adj,graph_inc,graph_list,false);
-        else RandomHandler::generate_graph(number,density,graph_adj,graph_inc,graph_list,true);
-        graph_adj.print();
-        std::cout << "\n";
-        graph_inc.print();
-        std::cout << "\n";
-        graph_list.print();
-        std::cout << "\n";
+        if(problem==0){
+            RandomHandler::generate_graph(number,density,graph_adj,graph_inc,graph_list,false);
+        }
+        else{
+            RandomHandler::generate_graph(number,density,graph_adj,graph_inc,graph_list,true);
+        }
+        int t1 = testing(graph_adj,problem,algorithm);
+        int t2 = testing(graph_inc,problem,algorithm);
+        int t3 = testing(graph_list,problem,algorithm);
+        FileHandler::save_test(output,id,0,problem,algorithm,number,density,t1);
+        FileHandler::save_test(output,id+1,1,problem,algorithm,number,density,t2);
+        FileHandler::save_test(output,id+2,2,problem,algorithm,number,density,t3);
+        id+=3;
     }
+}
+
+int Main::testing(Graph& graph, int problem, int algorithm) {
+    Timer timer;
+    timer.reset();
+    timer.start();
+    if(problem==0){
+        if(algorithm==0) MST::prim(graph);
+        else if (algorithm==1) MST::kruskal(graph);
+    }
+    else{
+        if(algorithm==0) ShortestPath::dijkstra(graph);
+        else if(algorithm==1) ShortestPath::bellman(graph);
+    }
+    timer.stop();
+    return timer.result();
+}
+
+void Main::singlefile(Graph& graph, int problem, int algorithm, std::string output){
+    std::ostringstream result;
+    int ret;
+    if(problem==0){
+        if(algorithm==0) ret = MST::prim(graph,&result);
+        else if (algorithm==1) ret = MST::kruskal(graph,&result);
+    }
+    else{
+        if(algorithm==0) ret = ShortestPath::dijkstra(graph,&result);
+        else if(algorithm==1) ret = ShortestPath::bellman(graph,&result);
+    }
+    result << ret << std::endl;
+    std::cout << graph.toString() << std::endl << result.str() << std::endl;
+    FileHandler::save_to_file(output,graph,result.str());
 }

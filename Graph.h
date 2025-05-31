@@ -5,6 +5,7 @@
 #ifndef AIZOG_GRAPH_H
 #define AIZOG_GRAPH_H
 #include "EdgeList.h"
+#include <iostream>
 
 class Graph {
 private:
@@ -15,7 +16,7 @@ public:
     virtual void set_nodes(int number) = 0;
     virtual void init() = 0;
     virtual void add_edge(int v1, int v2, int wage, bool directed) = 0;
-    virtual void print() = 0;
+    virtual std::string toString() = 0;
     virtual void get_all_edges(EdgeList& list, bool directed) = 0;
     virtual int get_edge(int v1, int v2) = 0;
     virtual int get_nodes() = 0;

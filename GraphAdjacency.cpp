@@ -4,6 +4,7 @@
 
 #include "GraphAdjacency.h"
 #include <iostream>
+#include <sstream>
 
 GraphAdjacency::~GraphAdjacency() {
     for (int i = 0; i < V; i++) {
@@ -28,14 +29,16 @@ void GraphAdjacency::add_edge(int v1, int v2, int wage, bool directed) {
     edge_count++;
 }
 
-void GraphAdjacency::print() {
-    std::cout << "Macierz Sasiedztwa" << std::endl;
+std::string GraphAdjacency::toString() {
+    std::ostringstream out;
+    out << "Macierz Sasiedztwa" << std::endl;
     for(int i=0; i<V; i++){
         for(int j=0; j<V; j++){
-            std::cout << matrix[i][j] << "\t";
+            out << matrix[i][j] << "\t";
         }
-        std::cout << "\n";
+        out << "\n";
     }
+    return out.str();
 }
 
 bool GraphAdjacency::edge_exists(int v1, int v2) {
@@ -70,13 +73,12 @@ int GraphAdjacency::get_edges_number() {
 }
 
 void GraphAdjacency::get_edges_from_node(EdgeList &list, int node, bool directed) {
-    int k;
-    if(directed) k=0;
-    else k=node+1;
-    for(int j=k; j<V; j++){
-        int wage = get_edge(node, j);
-        if(wage!=0){
-            list.add_edge(node,j,wage);
+    for(int j = 0; j < V; j++) {
+        if (j != node) {
+            int wage = get_edge(node, j);
+            if (wage != 0) {
+                list.add_edge(node, j, wage);
+            }
         }
     }
 }

@@ -4,6 +4,7 @@
 
 #include "GraphIncidence.h"
 #include <iostream>
+#include <sstream>
 
 GraphIncidence::~GraphIncidence() {
     for (int i = 0; i < V; i++) {
@@ -35,14 +36,16 @@ void GraphIncidence::add_edge(int v1, int v2, int wage, bool directed) {
     edge_count++;
 }
 
-void GraphIncidence::print() {
-    std::cout << "Macierz Incydencji" << std::endl;
+std::string GraphIncidence::toString() {
+    std::ostringstream out;
+    out << "Macierz Incydencji" << std::endl;
     for(int i=0; i<V; i++){
         for(int j=0; j<edge_count; j++){
-            std::cout << matrix[i][j] << "\t";
+            out << matrix[i][j] << "\t";
         }
-        std::cout << "\n";
+        out << "\n";
     }
+    return out.str();
 }
 
 void GraphIncidence::get_all_edges(EdgeList &list, bool directed) {
@@ -94,18 +97,22 @@ int GraphIncidence::get_edges_number() {
 }
 
 void GraphIncidence::get_edges_from_node(EdgeList &list, int node, bool directed) {
-    for(int i=0; i<edge_count; i++){
+    for (int i = 0; i < edge_count; i++) {
         int wage = matrix[node][i];
-        if(wage!=0){
-            int v2 = -1;
 
-            for(int j=0; j<V; j++){
-                if(j!=node && matrix[j][i]!=0){
-                    v2=j;
+        // Sprawdź, czy node jest źródłem krawędzi (w przypadku skierowanego grafu)
+        if (wage > 0 || (!directed && wage != 0)) {
+            int target = -1;
+            for (int j = 0; j < V; j++) {
+                if (j != node && matrix[j][i] != 0) {
+                    target = j;
                     break;
                 }
             }
-            if(v2!=-1) if(directed || node<v2) list.add_edge(node,v2,std::abs(wage));
+
+            if (target != -1) {
+                list.add_edge(node, target, std::abs(wage));
+            }
         }
     }
 }

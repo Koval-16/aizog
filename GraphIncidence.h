@@ -5,6 +5,7 @@
 #ifndef AIZOG_GRAPHINCIDENCE_H
 #define AIZOG_GRAPHINCIDENCE_H
 #include "Graph.h"
+#include <iostream>
 
 
 class GraphIncidence : public Graph{
@@ -17,7 +18,7 @@ public:
     void set_nodes(int number) override;
     void init() override;
     void add_edge(int v1, int v2, int wage, bool directed) override;
-    void print() override;
+    std::string toString() override;
     void get_all_edges(EdgeList& list, bool directed) override;
     int get_edge(int v1, int v2) override;
     int get_nodes() override;

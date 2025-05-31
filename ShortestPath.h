@@ -9,8 +9,8 @@
 
 class ShortestPath {
 public:
-    static void dijkstra(Graph graph);
-    static void bellman(Graph graph);
+    static int dijkstra(Graph& graph, std::ostringstream* result= nullptr);
+    static int bellman(Graph& graph, std::ostringstream* result= nullptr);
 };
 
 

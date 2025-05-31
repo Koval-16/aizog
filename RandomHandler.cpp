@@ -31,28 +31,61 @@ void RandomHandler::generate_graph(int nodes, float density,GraphAdjacency& grap
         waiting_room = add_number(waiting_room,waiting_size,i);
     }
 
-    // Creating first edge
-    connected_nodes = add_number(connected_nodes,connected_size, remove_number(waiting_room,waiting_size,0));
-    int p = rand()%waiting_size;
-    connected_nodes = add_number(connected_nodes,connected_size, remove_number(waiting_room,waiting_size,p));
-    int w = (rand()%1000)+1;
-    graph_adj.add_edge(connected_nodes[0],connected_nodes[1],w,directed);
-    graph_inc.add_edge(connected_nodes[0],connected_nodes[1],w,directed);
-    graph_list.add_edge(connected_nodes[0],connected_nodes[1],w,directed);
-    current_edges++;
-
-    // Creating spanning tree
-    while(waiting_size!=0){
-        int chosen = rand()%connected_size;
-        int pos = rand()%waiting_size;
-        int removed = remove_number(waiting_room,waiting_size,pos);
-        w = (rand()%1000)+1;
-        graph_adj.add_edge(connected_nodes[chosen],removed, w, directed);
-        graph_inc.add_edge(connected_nodes[chosen],removed, w, directed);
-        graph_list.add_edge(connected_nodes[chosen],removed, w, directed);
+    if (!directed) {
+        // Creating first edge (spanning tree for undirected)
+        connected_nodes = add_number(connected_nodes,connected_size, remove_number(waiting_room,waiting_size,0));
+        int p = rand()%waiting_size;
+        connected_nodes = add_number(connected_nodes,connected_size, remove_number(waiting_room,waiting_size,p));
+        int w = (rand()%1000)+1;
+        graph_adj.add_edge(connected_nodes[0],connected_nodes[1],w,directed);
+        graph_inc.add_edge(connected_nodes[0],connected_nodes[1],w,directed);
+        graph_list.add_edge(connected_nodes[0],connected_nodes[1],w,directed);
         current_edges++;
-        connected_nodes = add_number(connected_nodes,connected_size, removed);
+
+        while(waiting_size!=0){
+            int chosen = rand()%connected_size;
+            int pos = rand()%waiting_size;
+            int removed = remove_number(waiting_room,waiting_size,pos);
+            w = (rand()%1000)+1;
+            graph_adj.add_edge(connected_nodes[chosen],removed, w, directed);
+            graph_inc.add_edge(connected_nodes[chosen],removed, w, directed);
+            graph_list.add_edge(connected_nodes[chosen],removed, w, directed);
+            current_edges++;
+            connected_nodes = add_number(connected_nodes,connected_size, removed);
+        }
+    } else {
+        // Creating Hamiltonian cycle for directed graph
+        int* cycle = new int[nodes];
+        for (int i = 0; i < nodes; i++) {
+            cycle[i] = i;
+        }
+
+        // Fisher-Yates shuffle (excluding node 0 as starting point)
+        for (int i = nodes - 1; i > 1; i--) {
+            int j = 1 + rand() % i; // don't swap 0
+            std::swap(cycle[i], cycle[j]);
+        }
+
+        // Create Hamiltonian cycle
+        for (int i = 0; i < nodes - 1; i++) {
+            int from = cycle[i];
+            int to = cycle[i + 1];
+            int w = rand() % 1000 + 1;
+            graph_adj.add_edge(from, to, w, directed);
+            graph_inc.add_edge(from, to, w, directed);
+            graph_list.add_edge(from, to, w, directed);
+            current_edges++;
+        }
+        // Closing the cycle
+        int w = rand() % 1000 + 1;
+        graph_adj.add_edge(cycle[nodes - 1], cycle[0], w, directed);
+        graph_inc.add_edge(cycle[nodes - 1], cycle[0], w, directed);
+        graph_list.add_edge(cycle[nodes - 1], cycle[0], w, directed);
+        current_edges++;
+
+        delete[] cycle;
     }
+
 
     // Creating other edges
     int** list_of_edges = new int*[max_edges];
@@ -82,7 +115,7 @@ void RandomHandler::generate_graph(int nodes, float density,GraphAdjacency& grap
     while(current_edges<edges){
         int v1 = list_of_edges[id][0];
         int v2 = list_of_edges[id][1];
-        w = rand()%1000;
+        int w = rand()%1000;
         graph_adj.add_edge(v1,v2,w,directed);
         graph_inc.add_edge(v1,v2,w,directed);
         graph_list.add_edge(v1,v2,w,directed);

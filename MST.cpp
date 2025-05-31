@@ -4,10 +4,11 @@
 
 #include "MST.h"
 #include <iostream>
+#include <sstream>
 #include "Edge.h"
 #include "EdgeList.h"
 
-int MST::prim(Graph& graph, int represenation) {
+int MST::prim(Graph& graph, std::ostringstream* result) {
     int mst = 0;
 
     int colours[graph.get_nodes()];
@@ -28,7 +29,7 @@ int MST::prim(Graph& graph, int represenation) {
         int v2 = list.get(index)->get_target_node();
         int wage = list.get(index)->get_wage();
         if(colours[v1]!=colours[v2]){
-            std::cout << v1 << "->" << v2 << " = " << wage << std::endl;
+            if(result) *result << v1 << "->" << v2 << " = " << wage << std::endl;
             colours[v1] = -1;
             colours[v2] = -1;
             mst += wage;
@@ -39,18 +40,14 @@ int MST::prim(Graph& graph, int represenation) {
         }
         index++;
     }
-
     return mst;
 }
 
-int MST::kruskal(Graph& graph, int representation) {
+int MST::kruskal(Graph& graph, std::ostringstream* result) {
     int mst = 0;
     // 1.tworzymy listę krawędzi grafu
     EdgeList list;
     graph.get_all_edges(list,false);
-    for(int i=0; i<list.get_size(); i++){
-        std::cout << list.get(i)->get_node() << " <-> "<< list.get(i)->get_target_node() << " - " << list.get(i)->get_wage() << std::endl;
-    }
     // 2.sortujemy krawędzie w tej liście wg ich wag
     sort(list);
     // 3.nadajemy unikalne kolory węzłom grafu (identyfikacja cykli)
@@ -66,15 +63,15 @@ int MST::kruskal(Graph& graph, int representation) {
         int v2 = list.get(index)->get_target_node();
         int wage = list.get(index)->get_wage();
         if(colours[v1]!=colours[v2]){
-            colours[v1] = -1;
-            colours[v2] = -1;
+            int old_colour = colours[v2];
+            int new_colour = colours[v1];
+            for(int i=0; i<graph.get_nodes(); i++) if(colours[i]==old_colour) colours[i]=new_colour;
             mst += wage;
             edges_added++;
-            std::cout << v1 << "->" << v2 << " = " << wage << std::endl;
+            if(result) *result << v1 << "->" << v2 << " = " << wage << std::endl;
         }
         index++;
     }
-    std::cout << mst << std::endl;
     return mst;
 }
 

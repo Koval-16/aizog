@@ -5,6 +5,7 @@
 #ifndef AIZOG_GRAPHADJACENCY_H
 #define AIZOG_GRAPHADJACENCY_H
 #include "Graph.h"
+#include <iostream>
 
 class GraphAdjacency : public Graph {
 private:
@@ -16,7 +17,7 @@ public:
     void set_nodes(int number) override;
     void init() override;
     void add_edge(int v1, int v2, int wage, bool directed) override;
-    void print() override;
+    std::string toString() override;
     bool edge_exists(int v1, int v2);
     void get_all_edges(EdgeList& list, bool directed) override;
     int get_edge(int v1, int v2) override;

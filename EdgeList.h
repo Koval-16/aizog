@@ -21,7 +21,6 @@ public:
     Edge* get(int id);
     int get_size();
     void set(int id, Edge* edge);
-
 };
 
 
