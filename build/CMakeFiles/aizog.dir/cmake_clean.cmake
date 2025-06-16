@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/aizog.dir/Disjoint.cpp.obj"
+  "CMakeFiles/aizog.dir/Disjoint.cpp.obj.d"
   "CMakeFiles/aizog.dir/Edge.cpp.obj"
   "CMakeFiles/aizog.dir/Edge.cpp.obj.d"
   "CMakeFiles/aizog.dir/EdgeList.cpp.obj"
@@ -13,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/aizog.dir/GraphIncidence.cpp.obj.d"
   "CMakeFiles/aizog.dir/GraphList.cpp.obj"
   "CMakeFiles/aizog.dir/GraphList.cpp.obj.d"
+  "CMakeFiles/aizog.dir/Heap.cpp.obj"
+  "CMakeFiles/aizog.dir/Heap.cpp.obj.d"
   "CMakeFiles/aizog.dir/MST.cpp.obj"
   "CMakeFiles/aizog.dir/MST.cpp.obj.d"
   "CMakeFiles/aizog.dir/Main.cpp.obj"

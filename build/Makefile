@@ -128,6 +128,30 @@ aizog/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\aizog.dir\build.make CMakeFiles/aizog.dir/build
 .PHONY : aizog/fast
 
+Disjoint.obj: Disjoint.cpp.obj
+.PHONY : Disjoint.obj
+
+# target to build an object file
+Disjoint.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\aizog.dir\build.make CMakeFiles/aizog.dir/Disjoint.cpp.obj
+.PHONY : Disjoint.cpp.obj
+
+Disjoint.i: Disjoint.cpp.i
+.PHONY : Disjoint.i
+
+# target to preprocess a source file
+Disjoint.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\aizog.dir\build.make CMakeFiles/aizog.dir/Disjoint.cpp.i
+.PHONY : Disjoint.cpp.i
+
+Disjoint.s: Disjoint.cpp.s
+.PHONY : Disjoint.s
+
+# target to generate assembly for a file
+Disjoint.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\aizog.dir\build.make CMakeFiles/aizog.dir/Disjoint.cpp.s
+.PHONY : Disjoint.cpp.s
+
 Edge.obj: Edge.cpp.obj
 .PHONY : Edge.obj
 
@@ -296,6 +320,30 @@ GraphList.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\aizog.dir\build.make CMakeFiles/aizog.dir/GraphList.cpp.s
 .PHONY : GraphList.cpp.s
 
+Heap.obj: Heap.cpp.obj
+.PHONY : Heap.obj
+
+# target to build an object file
+Heap.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\aizog.dir\build.make CMakeFiles/aizog.dir/Heap.cpp.obj
+.PHONY : Heap.cpp.obj
+
+Heap.i: Heap.cpp.i
+.PHONY : Heap.i
+
+# target to preprocess a source file
+Heap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\aizog.dir\build.make CMakeFiles/aizog.dir/Heap.cpp.i
+.PHONY : Heap.cpp.i
+
+Heap.s: Heap.cpp.s
+.PHONY : Heap.s
+
+# target to generate assembly for a file
+Heap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\aizog.dir\build.make CMakeFiles/aizog.dir/Heap.cpp.s
+.PHONY : Heap.cpp.s
+
 MST.obj: MST.cpp.obj
 .PHONY : MST.obj
 
@@ -425,6 +473,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... aizog
+	@echo ... Disjoint.obj
+	@echo ... Disjoint.i
+	@echo ... Disjoint.s
 	@echo ... Edge.obj
 	@echo ... Edge.i
 	@echo ... Edge.s
@@ -446,6 +497,9 @@ help:
 	@echo ... GraphList.obj
 	@echo ... GraphList.i
 	@echo ... GraphList.s
+	@echo ... Heap.obj
+	@echo ... Heap.i
+	@echo ... Heap.s
 	@echo ... MST.obj
 	@echo ... MST.i
 	@echo ... MST.s

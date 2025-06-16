@@ -62,7 +62,6 @@ void Main::file_mode(int problem, int algorithm, std::string input, std::string 
         FileHandler::read_file(input,graph_inc,true);
         FileHandler::read_file(input,graph_list,true);
     }
-
     singlefile(graph_inc,problem,algorithm,output);
     singlefile(graph_list,problem,algorithm,output);
     singlefile(graph_adj,problem,algorithm,output);

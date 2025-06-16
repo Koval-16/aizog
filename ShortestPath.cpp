@@ -7,6 +7,7 @@
 #include "EdgeList.h"
 #include <iostream>
 #include <sstream>
+#include "Heap.h"
 
 int ShortestPath::dijkstra(Graph& graph, std::ostringstream* result) {
     // 1.Inicjujemy tablicę: wierzchołek początkowy droga=0, pozostałe droga=MAX
@@ -18,60 +19,52 @@ int ShortestPath::dijkstra(Graph& graph, std::ostringstream* result) {
 
     // 1.Inicjujemy tablicę: wierzchołek początkowy droga=0, pozostałe droga=MAX
     int node = 0;
-    int dijkstra_tab[graph.get_nodes()][2]; // [0]<-wartosc, [1]<-wierzcholek
-    for(int i=0; i<graph.get_nodes(); i++){
-        if(i==node){
-            dijkstra_tab[i][0] = 0;
-            dijkstra_tab[i][1] = node;
-        }
-        else{
-            dijkstra_tab[i][0] = INT_MAX;
-            dijkstra_tab[i][1] = -1;
-        }
+    int nodes = graph.get_nodes();
+    int dist[nodes];
+    int prev[nodes];
+
+    for(int i = 0; i < nodes; i++) {
+        dist[i] = INT_MAX;
+        prev[i] = -1;
     }
+    dist[node] = 0;
 
-    bool visited[graph.get_nodes()];
-    for(int i=0; i<graph.get_nodes(); i++) visited[i]=false;
+    Heap heap(nodes, dist);
 
-    // 2.Dla wszystkich wierzchołków: relaksacja dróg
-    // - jeśli krawędź zmniejsza drogę, to aktualizujemy w tablicy
-    int n = node;
-    for(int j=0; j<graph.get_nodes(); j++){
+    while (!heap.is_empty()) {
+        HeapNode u = heap.extract_min();
+        int n = u.n;
+
         EdgeList list;
-        graph.get_edges_from_node(list,n,true);
-        for(int i=0; i<list.get_size(); i++){
-            int target = list.get(i)->get_target_node();
-            int new_wage = list.get(i)->get_wage()+dijkstra_tab[n][0];
-            if(new_wage<dijkstra_tab[target][0]){
-                dijkstra_tab[target][0]=new_wage;
-                dijkstra_tab[target][1]=n;
-            }
-        }
-        // 3.Gdy zakończymy relaksację krawedzi danego wierzchołka, to:
-        // - usuwamy go z puli, a następny wierzchołek to ten o aktualnie najmniejszej drodze
-        visited[n]=true;
-        int lowest = INT_MAX;
-        for(int i=0; i<graph.get_nodes(); i++){
-            if(!visited[i]){
-                if(dijkstra_tab[i][0]<lowest){
-                    lowest=dijkstra_tab[i][0];
-                    n = i;
-                }
+        graph.get_edges_from_node(list, n, true);
+
+        for (int i = 0; i < list.get_size(); i++) {
+            int v = list.get(i)->get_target_node();
+            int weight = list.get(i)->get_wage();
+            if (heap.is_in_heap(v) && dist[n] != INT_MAX && dist[n] + weight < dist[v]) {
+                dist[v] = dist[n] + weight;
+                prev[v] = n;
+                heap.decrease_key(v, dist[v]);
             }
         }
     }
 
-    // 4.Wyznaczamy ścieżkę od ostatniego
     int end = 2;
-    int value = dijkstra_tab[end][0];
-    int src = dijkstra_tab[end][1];
-    if(result) *result << "Value: " << value << " Path: " << end << " <-- ";
-    while(src!=node){
-        if(result) *result << src << " <-- ";
-        src = dijkstra_tab[src][1];
+    if (dist[end] == INT_MAX) {
+        if (result) *result << "Brak ścieżki z " << node << " do " << end << std::endl;
+        return -1;
     }
-    if(result) *result << node << std::endl;
-    return value;
+
+    if (result) {
+        *result << "Value: " << dist[end] << " Path: " << end;
+        int src = prev[end];
+        while (src != node) {
+            *result << " <-- " << src;
+            src = prev[src];
+        }
+        *result << " <-- " << node << std::endl;
+    }
+    return dist[end];
 }
 
 int ShortestPath::bellman(Graph& graph, std::ostringstream* result) {
@@ -100,7 +93,7 @@ int ShortestPath::bellman(Graph& graph, std::ostringstream* result) {
 
     // 3.Lecimy po kolei krawędzie, relaksacja, jeśli zmniejsza to do tabeli
     // 4.Tyle iteracji ile wierzchołków
-    for(int i=0; i<graph.get_nodes(); i++){
+    for(int i=0; i<graph.get_nodes()-1; i++){
         for(int j=0; j<list.get_size(); j++){
             int source = list.get(j)->get_node();
             int target = list.get(j)->get_target_node();
@@ -110,6 +103,16 @@ int ShortestPath::bellman(Graph& graph, std::ostringstream* result) {
                 bellman_tab[target][0]= new_wage+bellman_tab[source][0];
                 bellman_tab[target][1]= source;
             }
+        }
+    }
+    for(int j=0; j<list.get_size(); j++){
+        int source = list.get(j)->get_node();
+        int target = list.get(j)->get_target_node();
+        int new_wage = list.get(j)->get_wage();
+        if(bellman_tab[source][0] != INT_MAX &&
+           bellman_tab[source][0] + new_wage < bellman_tab[target][0]) {
+            if(result) *result << "Wykryto cykl o ujemnej długości!" << std::endl;
+            return -1;
         }
     }
 

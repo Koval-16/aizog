@@ -1,15 +1,67 @@
-CMakeFiles/aizog.dir/MST.cpp.obj: \
- C:\Users\kuba\CLionProjects\aizog\MST.cpp \
- C:\Users\kuba\CLionProjects\aizog\MST.h \
- C:\Users\kuba\CLionProjects\aizog\Graph.h \
- C:\Users\kuba\CLionProjects\aizog\EdgeList.h \
- C:\Users\kuba\CLionProjects\aizog\Edge.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/iostream \
+CMakeFiles/aizog.dir/Heap.cpp.obj: \
+ C:\Users\kuba\CLionProjects\aizog\Heap.cpp \
+ C:\Users\kuba\CLionProjects\aizog\Heap.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/cmath \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/requires_hosted.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++config.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/os_defines.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/cpu_defines.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/pstl/pstl_config.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/cpp_type_traits.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/ext/type_traits.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/math.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/corecrt.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/vadefs.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/std_abs.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/stdlib.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+ C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/limits.h \
+ C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/syslimits.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/limits.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/stdlib.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/malloc.h \
+ C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/mm_malloc.h \
+ C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/errno.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/version.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/specfun.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/stl_algobase.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/functexcept.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/exception_defines.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/ext/numeric_traits.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/stl_pair.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/type_traits \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/move.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/utility.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/stl_iterator_base_types.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/stl_iterator_base_funcs.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/concept_check.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/debug/assertions.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/stl_iterator.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/ptr_traits.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/debug/debug.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/predefined_ops.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bit \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/concepts \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/limits \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/gamma.tcc \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/special_function_util.h \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/bessel_function.tcc \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/beta_function.tcc \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/ell_integral.tcc \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/exp_integral.tcc \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/hypergeometric.tcc \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/legendre_function.tcc \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/modified_bessel_func.tcc \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/poly_hermite.tcc \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/poly_laguerre.tcc \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/riemann_zeta.tcc \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/iostream \
  C:/Program\ Files/mingw64/include/c++/14.2.0/ostream \
  C:/Program\ Files/mingw64/include/c++/14.2.0/ios \
  C:/Program\ Files/mingw64/include/c++/14.2.0/iosfwd \
@@ -18,32 +70,20 @@ CMakeFiles/aizog.dir/MST.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/postypes.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/cwchar \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/wchar.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/corecrt.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/vadefs.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/_mingw_stat64.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/swprintf.inl \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/wchar_s.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/exception \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/exception.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/version.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/exception_ptr.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/exception_defines.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/cxxabi_init_exception.h \
  C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stddef.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/stddef.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/crtdefs.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/typeinfo \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/hash_bytes.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/new \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/move.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/type_traits \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/nested_exception.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/char_traits.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/localefwd.h \
@@ -59,13 +99,9 @@ CMakeFiles/aizog.dir/MST.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/gthr.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/gthr-default.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/pthread.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/errno.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sys/types.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/process.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/corecrt_startup.h \
- C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/limits.h \
- C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/syslimits.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/limits.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/signal.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/pthread_signal.h \
  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/time.h \
@@ -81,27 +117,10 @@ CMakeFiles/aizog.dir/MST.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/allocator.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/x86_64-w64-mingw32/bits/c++allocator.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/new_allocator.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/functexcept.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/cpp_type_traits.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/ostream_insert.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/cxxabi_forced.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/stl_iterator_base_funcs.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/concept_check.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/debug/assertions.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/stl_iterator_base_types.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/stl_iterator.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/ext/type_traits.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/ptr_traits.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/stl_function.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/backward/binders.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/ext/numeric_traits.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/stl_algobase.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/stl_pair.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/utility.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/debug/debug.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/predefined_ops.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bit \
- C:/Program\ Files/mingw64/include/c++/14.2.0/concepts \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/refwrap.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/invoke.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/range_access.h \
@@ -115,12 +134,6 @@ CMakeFiles/aizog.dir/MST.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/string_view.tcc \
  C:/Program\ Files/mingw64/include/c++/14.2.0/ext/string_conversions.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/cstdlib \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/stdlib.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/stdlib.h \
- C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/malloc.h \
- C:/Program\ Files/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/mm_malloc.h \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/std_abs.h \
  C:/Program\ Files/mingw64/include/c++/14.2.0/cstdio \
  C:/Program\ Files/mingw64/include/c++/14.2.0/cerrno \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/charconv.h \
@@ -147,8 +160,4 @@ CMakeFiles/aizog.dir/MST.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/basic_ios.tcc \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/ostream.tcc \
  C:/Program\ Files/mingw64/include/c++/14.2.0/istream \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/istream.tcc \
- C:/Program\ Files/mingw64/include/c++/14.2.0/sstream \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/sstream.tcc \
- C:\Users\kuba\CLionProjects\aizog\Disjoint.h \
- C:\Users\kuba\CLionProjects\aizog\Heap.h
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/istream.tcc

@@ -7,39 +7,50 @@
 #include <sstream>
 #include "Edge.h"
 #include "EdgeList.h"
+#include "Disjoint.h"
+#include "Heap.h"
 
 int MST::prim(Graph& graph, std::ostringstream* result) {
     int mst = 0;
+    int v = graph.get_nodes();
 
-    int colours[graph.get_nodes()];
-    for(int i=0; i<graph.get_nodes(); i++) colours[i] = i;
+    int* key = new int[v];
+    int* parent = new int[v];
+    bool* in_mst = new bool[v];
 
-    int node = 0;
-    colours[node] = -1;
-
-    int edges_added = 0;
-    int index = 0;
-
-    EdgeList list;
-    graph.get_edges_from_node(list,node,false);
-
-    while(edges_added<graph.get_nodes()-1 && index<list.get_size()){
-        sort(list);
-        int v1 = list.get(index)->get_node();
-        int v2 = list.get(index)->get_target_node();
-        int wage = list.get(index)->get_wage();
-        if(colours[v1]!=colours[v2]){
-            if(result) *result << v1 << "->" << v2 << " = " << wage << std::endl;
-            colours[v1] = -1;
-            colours[v2] = -1;
-            mst += wage;
-            edges_added++;
-            graph.get_edges_from_node(list,v2,false);
-            list.remove_edge(index);
-            index=-1;
-        }
-        index++;
+    for(int i=0; i<v; i++){
+        key[i] = INT_MAX;
+        parent[i] = -1;
+        in_mst[i] = false;
     }
+    key[0] = 0;
+    Heap heap(v,key);
+
+    while(!heap.is_empty()){
+        HeapNode minimum = heap.extract_min();
+        if (parent[minimum.n] != -1 && result) {
+            *result << parent[minimum.n] << " -> " << minimum.n << " = " << key[minimum.n] << std::endl;
+        }
+        in_mst[minimum.n] = true;
+        EdgeList list;
+        graph.get_edges_from_node(list,minimum.n,false);
+        for(int u=0; u<list.get_size(); u++){
+            int target = list.get(u)->get_target_node();
+            int weight = list.get(u)->get_wage();
+            if(!in_mst[target] && heap.is_in_heap(target) && weight<key[target]){
+                key[target] = weight;
+                parent[target] = minimum.n;
+                heap.decrease_key(target,weight);
+            }
+        }
+    }
+
+    for(int i = 1; i < v; i++) {
+        mst += key[i];
+    }
+    delete[] key;
+    delete[] parent;
+    delete[] in_mst;
     return mst;
 }
 
@@ -51,8 +62,7 @@ int MST::kruskal(Graph& graph, std::ostringstream* result) {
     // 2.sortujemy krawędzie w tej liście wg ich wag
     sort(list);
     // 3.nadajemy unikalne kolory węzłom grafu (identyfikacja cykli)
-    int colours[graph.get_nodes()];
-    for(int i=0; i<graph.get_nodes(); i++) colours[i] = i;
+    Disjoint dis(graph.get_nodes());
     // 4.wybieramy kolejne krawędzie grafu zachłannie
     // 5.jeżeli co najmniej jeden z węzłów ma inny kolor niż kolor grafu, to dołączamy
     // 6.musimy dodać n-1 krawędzi
@@ -62,13 +72,11 @@ int MST::kruskal(Graph& graph, std::ostringstream* result) {
         int v1 = list.get(index)->get_node();
         int v2 = list.get(index)->get_target_node();
         int wage = list.get(index)->get_wage();
-        if(colours[v1]!=colours[v2]){
-            int old_colour = colours[v2];
-            int new_colour = colours[v1];
-            for(int i=0; i<graph.get_nodes(); i++) if(colours[i]==old_colour) colours[i]=new_colour;
+        if (dis.find_set(v1)!=dis.find_set(v2)) {  // tylko jeśli były w innych zbiorach
             mst += wage;
             edges_added++;
-            if(result) *result << v1 << "->" << v2 << " = " << wage << std::endl;
+            dis.union_set(v1,v2);
+            if (result) *result << v1 << "->" << v2 << " = " << wage << std::endl;
         }
         index++;
     }

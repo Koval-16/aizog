@@ -22,6 +22,7 @@ public:
     virtual int get_nodes() = 0;
     virtual int get_edges_number() = 0;
     virtual void get_edges_from_node(EdgeList &list, int node, bool directed) = 0;
+    virtual bool has_edges_from_node(int node, bool directed) = 0;
 };
 
 

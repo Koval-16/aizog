@@ -11,6 +11,7 @@ class ShortestPath {
 public:
     static int dijkstra(Graph& graph, std::ostringstream* result= nullptr);
     static int bellman(Graph& graph, std::ostringstream* result= nullptr);
+private:
 };
 
 

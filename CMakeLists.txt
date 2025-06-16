@@ -28,4 +28,8 @@ add_executable(aizog
         MST.cpp
         MST.h
         ShortestPath.cpp
-        ShortestPath.h)
+        ShortestPath.h
+        Disjoint.cpp
+        Disjoint.h
+        Heap.cpp
+        Heap.h)

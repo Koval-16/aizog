@@ -49,30 +49,32 @@ std::string GraphIncidence::toString() {
 }
 
 void GraphIncidence::get_all_edges(EdgeList &list, bool directed) {
-    for(int i=0; i<edge_count; i++){
+    for (int i = 0; i < edge_count; i++) {
         int v1 = -1;
         int v2 = -1;
         int wage = 0;
-        int id = 0;
-        while(v1==-1){
-            int value = matrix[id][i];
-            if(value!=0) {
-                v1=id;
-                wage = value;
+
+        for (int j = 0; j < V; j++) {
+            int value = matrix[j][i];
+            if (value != 0) {
+                if (v1 == -1) {
+                    v1 = j;
+                    wage = value;
+                } else {
+                    v2 = j;
+                    break;
+                }
             }
-            id++;
         }
-        while(v2==-1){
-            int value = matrix[id][i];
-            if(value!=0) v2=id;
-            id++;
+
+        // Sprawdzenie poprawności
+        if (v1 != -1 && v2 != -1) {
+            if (wage < 0) {
+                std::swap(v1, v2);
+                wage = -wage;
+            }
+            list.add_edge(v1, v2, wage);
         }
-        if(wage<0){
-            int temp = v1;
-            v1 = v2;
-            v2 = temp;
-        }
-        list.add_edge(v1,v2,abs(wage));
     }
 }
 
@@ -115,4 +117,22 @@ void GraphIncidence::get_edges_from_node(EdgeList &list, int node, bool directed
             }
         }
     }
+}
+
+bool GraphIncidence::has_edges_from_node(int node, bool directed) {
+    for (int i = 0; i < edge_count; i++) {
+        int wage = matrix[node][i];
+
+        if (wage > 0 || (!directed && wage != 0)) {
+            int target = -1;
+            for (int j = 0; j < V; j++) {
+                if (j != node && matrix[j][i] != 0) {
+                    target = j;
+                    break;
+                }
+            }
+            if (target != -1) return true;
+        }
+    }
+    return false;
 }

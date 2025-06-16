@@ -7,9 +7,15 @@
 #include <sstream>
 
 GraphList::~GraphList() {
-    for (int i = 0; i < V; i++) delete[] elist[i];
-    delete[] elist;
-    delete[] amount;
+    for (int i = 0; i < V; ++i) {
+        Successor* curr = adj[i];
+        while (curr != nullptr) {
+            Successor* to_delete = curr;
+            curr = curr->next;
+            delete to_delete;
+        }
+    }
+    delete[] adj;
 }
 
 void GraphList::set_nodes(int number) {
@@ -18,30 +24,16 @@ void GraphList::set_nodes(int number) {
 }
 
 void GraphList::init() {
-    elist = new Edge*[V];
-    amount = new int[V];
+    adj = new Successor*[V];
     for(int i=0; i<V; i++){
-        elist[i] = nullptr;
-        amount[i] = 0;
+        adj[i] = nullptr;
     }
 }
 
 void GraphList::add_edge(int v1, int v2, int wage, bool directed) {
-    int old_size = amount[v1];
-    Edge* temp = new Edge[old_size+1];
-    for(int i=0; i<old_size; i++) temp[i]=elist[v1][i];
-    temp[old_size] = Edge(v1,v2,wage);
-    delete[] elist[v1];
-    elist[v1] = temp;
-    amount[v1]++;
+    adj[v1] = new Successor(v2,wage,adj[v1]);
     if(!directed){
-        int old_size2 = amount[v2];
-        Edge* temp2 = new Edge[old_size2+1];
-        for(int i=0; i<old_size2; i++) temp2[i]=elist[v2][i];
-        temp2[old_size2] = Edge(v2,v1,wage);
-        delete[] elist[v2];
-        elist[v2] = temp2;
-        amount[v2]++;
+        adj[v2] = new Successor(v1,wage,adj[v2]);
     }
     edge_count++;
 }
@@ -51,8 +43,10 @@ std::string GraphList::toString() {
     out << "Lista nastepnikow" << std::endl;
     for(int i=0; i<V; i++){
         out << i << ": ";
-        for(int j=0; j<amount[i]; j++){
-            out << elist[i][j].get_target_node() << ":" << elist[i][j].get_wage() << "\t";
+        Successor* curr = adj[i];
+        while (curr != nullptr) {
+            out << curr->node << ":" << curr->wage << "\t";
+            curr = curr->next;
         }
         out << "\n";
     }
@@ -60,26 +54,28 @@ std::string GraphList::toString() {
 }
 
 void GraphList::get_all_edges(EdgeList &list, bool directed) {
-    for(int i=0; i<V; i++){
-        for(int j=0; j<amount[i]; j++){
-            Edge edge = elist[i][j];
-            if(!(!directed && edge.get_target_node()<i)){
-                int v1 = i;
-                int v2 = edge.get_target_node();
-                int wage = edge.get_wage();
-                list.add_edge(v1,v2,wage);
+    for (int v1 = 0; v1 < V; ++v1) {
+        Successor* curr = adj[v1];
+        while (curr != nullptr) {
+            int v2 = curr->node;
+            int wage = curr->wage;
+            if (directed || v1 < v2) {
+                list.add_edge(v1, v2, wage);
             }
+            curr = curr->next;
         }
     }
 }
 
 int GraphList::get_edge(int v1, int v2) {
-    for(int i=0; i<amount[v1]; i++){
-        if(i==v2){
-            return elist[v1][i].get_wage();
+    Successor* curr = adj[v1];
+    while (curr != nullptr) {
+        if (curr->node == v2) {
+            return curr->wage;
         }
+        curr = curr->next;
     }
-    return 0;
+    return 0; // brak takiej krawędzi
 }
 
 int GraphList::get_nodes() {
@@ -91,11 +87,15 @@ int GraphList::get_edges_number() {
 }
 
 void GraphList::get_edges_from_node(EdgeList &list, int node, bool directed) {
-    for (int j = 0; j < amount[node]; j++) {
-        Edge edge = elist[node][j];
-        int v1 = node;
-        int v2 = edge.get_target_node();
-        int wage = edge.get_wage();
-        list.add_edge(v1, v2, wage);
+    Successor* curr = adj[node];
+    while (curr != nullptr) {
+        list.add_edge(node, curr->node, curr->wage);
+        curr = curr->next;
     }
+}
+
+bool GraphList::has_edges_from_node(int node, bool directed) {
+    Successor* curr = adj[node];
+    if(curr!= nullptr) return true;
+    return false;
 }

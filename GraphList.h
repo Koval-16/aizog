@@ -8,10 +8,18 @@
 #include "Edge.h"
 #include <iostream>
 
+struct Successor {
+    int node;
+    int wage;
+    Successor* next;
+
+    Successor(int n, int w, Successor* nxt = nullptr)
+            : node(n), wage(w), next(nxt) {}
+};
+
 class GraphList : public Graph {
 private:
-    Edge** elist;
-    int* amount;
+    Successor** adj;
     int V;
     int edge_count;
 public:
@@ -25,6 +33,7 @@ public:
     int get_nodes() override;
     int get_edges_number() override;
     void get_edges_from_node(EdgeList &list, int node, bool directed) override;
+    bool has_edges_from_node(int node, bool directed) override;
 };
 
 

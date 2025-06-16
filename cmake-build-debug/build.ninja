@@ -121,6 +121,18 @@ build CMakeFiles/aizog.dir/ShortestPath.cpp.obj: CXX_COMPILER__aizog_unscanned_D
   OBJECT_DIR = CMakeFiles\aizog.dir
   OBJECT_FILE_DIR = CMakeFiles\aizog.dir
 
+build CMakeFiles/aizog.dir/Disjoint.cpp.obj: CXX_COMPILER__aizog_unscanned_Debug C$:/Users/kuba/CLionProjects/aizog/Disjoint.cpp || cmake_object_order_depends_target_aizog
+  DEP_FILE = CMakeFiles\aizog.dir\Disjoint.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\aizog.dir
+  OBJECT_FILE_DIR = CMakeFiles\aizog.dir
+
+build CMakeFiles/aizog.dir/Heap.cpp.obj: CXX_COMPILER__aizog_unscanned_Debug C$:/Users/kuba/CLionProjects/aizog/Heap.cpp || cmake_object_order_depends_target_aizog
+  DEP_FILE = CMakeFiles\aizog.dir\Heap.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\aizog.dir
+  OBJECT_FILE_DIR = CMakeFiles\aizog.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target aizog
@@ -129,7 +141,7 @@ build CMakeFiles/aizog.dir/ShortestPath.cpp.obj: CXX_COMPILER__aizog_unscanned_D
 #############################################
 # Link the executable aizog.exe
 
-build aizog.exe: CXX_EXECUTABLE_LINKER__aizog_Debug CMakeFiles/aizog.dir/Main.cpp.obj CMakeFiles/aizog.dir/Graph.cpp.obj CMakeFiles/aizog.dir/GraphAdjacency.cpp.obj CMakeFiles/aizog.dir/GraphIncidence.cpp.obj CMakeFiles/aizog.dir/GraphList.cpp.obj CMakeFiles/aizog.dir/Edge.cpp.obj CMakeFiles/aizog.dir/FileHandler.cpp.obj CMakeFiles/aizog.dir/RandomHandler.cpp.obj CMakeFiles/aizog.dir/Timer.cpp.obj CMakeFiles/aizog.dir/EdgeList.cpp.obj CMakeFiles/aizog.dir/MST.cpp.obj CMakeFiles/aizog.dir/ShortestPath.cpp.obj
+build aizog.exe: CXX_EXECUTABLE_LINKER__aizog_Debug CMakeFiles/aizog.dir/Main.cpp.obj CMakeFiles/aizog.dir/Graph.cpp.obj CMakeFiles/aizog.dir/GraphAdjacency.cpp.obj CMakeFiles/aizog.dir/GraphIncidence.cpp.obj CMakeFiles/aizog.dir/GraphList.cpp.obj CMakeFiles/aizog.dir/Edge.cpp.obj CMakeFiles/aizog.dir/FileHandler.cpp.obj CMakeFiles/aizog.dir/RandomHandler.cpp.obj CMakeFiles/aizog.dir/Timer.cpp.obj CMakeFiles/aizog.dir/EdgeList.cpp.obj CMakeFiles/aizog.dir/MST.cpp.obj CMakeFiles/aizog.dir/ShortestPath.cpp.obj CMakeFiles/aizog.dir/Disjoint.cpp.obj CMakeFiles/aizog.dir/Heap.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\aizog.dir

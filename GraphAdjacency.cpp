@@ -82,3 +82,15 @@ void GraphAdjacency::get_edges_from_node(EdgeList &list, int node, bool directed
         }
     }
 }
+
+bool GraphAdjacency::has_edges_from_node(int node, bool directed) {
+    for(int j = 0; j < V; j++) {
+        if (j != node) {
+            int wage = get_edge(node, j);
+            if (wage != 0) {
+                return true;
+            }
+        }
+    }
+    return false;
+}

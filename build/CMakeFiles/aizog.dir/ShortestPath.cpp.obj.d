@@ -166,4 +166,5 @@ CMakeFiles/aizog.dir/ShortestPath.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/poly_laguerre.tcc \
  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/riemann_zeta.tcc \
  C:/Program\ Files/mingw64/include/c++/14.2.0/sstream \
- C:/Program\ Files/mingw64/include/c++/14.2.0/bits/sstream.tcc
+ C:/Program\ Files/mingw64/include/c++/14.2.0/bits/sstream.tcc \
+ C:\Users\kuba\CLionProjects\aizog\Heap.h
