@@ -23,7 +23,7 @@ void FileHandler::read_file(std::string &filename, Graph &graph, bool directed) 
                 }
                 if(number_nodes<=0) throw std::runtime_error("Incorrect number of nodes");
                 graph.set_nodes(number_nodes);
-                graph.init();
+                graph.init(number_edges);
             }
             else{
                 std::istringstream iss(text);

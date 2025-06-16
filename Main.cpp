@@ -26,26 +26,70 @@ void Main::start(int arg_number, char* arg_values[]){
     Timer timer;
     std::string mode = arg_values[1];
     if(mode=="--file"){
-        int problem = std::stoi(arg_values[2]);
-        int algorithm = std::stoi(arg_values[3]);
-        std::string input = arg_values[4];
-        std::string output = arg_values[5];
-        file_mode(problem,algorithm,input,output);
+        try{
+            int problem = std::stoi(arg_values[2]);
+            int algorithm = std::stoi(arg_values[3]);
+            std::string input = arg_values[4];
+            std::string output = arg_values[5];
+            if(problem<0 || problem>1) throw std::exception();
+            if(algorithm<0 || algorithm>1) throw std::exception();
+            file_mode(problem,algorithm,input,output);
+        } catch (...){
+            help_mode();
+        }
+
     }
     else if(mode=="--test"){
-        int problem = std::stoi(arg_values[2]);
-        int algorithm = std::stoi(arg_values[3]);
-        int number_of_nodes = std::stoi(arg_values[4]);
-        float density = std::stof(arg_values[5]);
-        int iterations = std::stoi(arg_values[6]);
-        std::string output = arg_values[7];
-        test_mode(problem,algorithm,number_of_nodes,density,iterations,output);
+        try{
+            int problem = std::stoi(arg_values[2]);
+            int algorithm = std::stoi(arg_values[3]);
+            int number_of_nodes = std::stoi(arg_values[4]);
+            float density = std::stof(arg_values[5]);
+            int iterations = std::stoi(arg_values[6]);
+            int start_node = (arg_number>=8) ? std::stoi(arg_values[7]) : 0;
+            int end_node = (arg_number>=9) ? std::stoi(arg_values[8]) : number_of_nodes-1;
+            std::string output = arg_values[7];
+            if(problem<0 || problem>1) throw std::exception();
+            if(algorithm<0 || algorithm>1) throw std::exception();
+            if(density<0 || density>1) throw std::exception();
+            if(iterations<=0) throw std::exception();
+            test_mode(problem,algorithm,number_of_nodes,density,iterations,output,start_node,end_node);
+        } catch (...){
+            help_mode();
+        }
     }
     else help_mode();
 }
 
 void Main::help_mode(){
-    std::cout << "" << std::endl;
+    std::cout << "Help Mode\n"
+                 "FILE TEST MODE\n"
+                 "\tUsage:\n"
+                 "\t./aizog --file <problem> <algorithm> <inputFile> <outputFile>\n"
+                 "\t<problem>\tProblem to be solved:\n"
+                 "\t\t0 - Minimum Spanning Tree\n"
+                 "\t\t1 - Shortest Path in Graph\n"
+                 "\t<algorithm>\tChosen algorithm: 0-Prim/Dijkstra, 1-Kruskal/Bellman\n"
+                 "\t\t0 - Prim(MST), Dijsktra(SP)\n"
+                 "\t\t1 - Kruskal(MST), Bellman(SP)\n"
+                 "\t<inputFile>\tName of input file storing a graph, with extension\n"
+                 "\t<outputFile>\tName of output file, where results will be saved.\n"
+                 "BENCHMARK MODE\n"
+                 "\tUsage:\n"
+                 "\t./aizog --test <problem> <algorithm> <number_of_nodes> <density> <iterations> <outputFile>\n"
+                 "\t<problem>\tProblem to be solved:\n"
+                 "\t\t0 - Minimum Spanning Tree\n"
+                 "\t\t1 - Shortest Path in Graph\n"
+                 "\t<algorithm>\tChosen algorithm: 0-Prim/Dijkstra, 1-Kruskal/Bellman\n"
+                 "\t\t0 - Prim(MST), Dijsktra(SP)\n"
+                 "\t\t1 - Kruskal(MST), Bellman(SP)\n"
+                 "\t<number_of_nodes>\tNumber of nodes in graph\n"
+                 "\t<density>\tDensity of edges in graph - float value in range [0;1]\n"
+                 "\t<iterations>\tNumber of times algorithm will be done.\n"
+                 "\t<outputFile>\tName of output file, where results will be saved.\n"
+                 "HELP MODE\n"
+                 "\tUsage:\n"
+                 "\t./aizo --help\n" << std::endl;
 }
 
 void Main::file_mode(int problem, int algorithm, std::string input, std::string output) {
@@ -67,7 +111,7 @@ void Main::file_mode(int problem, int algorithm, std::string input, std::string 
     singlefile(graph_adj,problem,algorithm,output);
 }
 
-void Main::test_mode(int problem, int algorithm, int number, float density, int iterations, std::string output) {
+void Main::test_mode(int problem, int algorithm, int number, float density, int iterations, std::string output, int start_node, int end_node) {
     int id=0;
     for(int i=0; i<iterations; i++){
         GraphAdjacency graph_adj;
@@ -79,9 +123,9 @@ void Main::test_mode(int problem, int algorithm, int number, float density, int 
         else{
             RandomHandler::generate_graph(number,density,graph_adj,graph_inc,graph_list,true);
         }
-        int t1 = testing(graph_adj,problem,algorithm);
-        int t2 = testing(graph_inc,problem,algorithm);
-        int t3 = testing(graph_list,problem,algorithm);
+        int t1 = testing(graph_adj,problem,algorithm,start_node,end_node);
+        int t2 = testing(graph_inc,problem,algorithm,start_node,end_node);
+        int t3 = testing(graph_list,problem,algorithm,start_node,end_node);
         FileHandler::save_test(output,id,0,problem,algorithm,number,density,t1);
         FileHandler::save_test(output,id+1,1,problem,algorithm,number,density,t2);
         FileHandler::save_test(output,id+2,2,problem,algorithm,number,density,t3);
@@ -89,7 +133,7 @@ void Main::test_mode(int problem, int algorithm, int number, float density, int 
     }
 }
 
-int Main::testing(Graph& graph, int problem, int algorithm) {
+int Main::testing(Graph& graph, int problem, int algorithm, int start_node, int end_node) {
     Timer timer;
     timer.reset();
     timer.start();
@@ -98,8 +142,8 @@ int Main::testing(Graph& graph, int problem, int algorithm) {
         else if (algorithm==1) MST::kruskal(graph);
     }
     else{
-        if(algorithm==0) ShortestPath::dijkstra(graph);
-        else if(algorithm==1) ShortestPath::bellman(graph);
+        if(algorithm==0) ShortestPath::dijkstra(graph,start_node,end_node);
+        else if(algorithm==1) ShortestPath::bellman(graph,start_node,end_node);
     }
     timer.stop();
     return timer.result();
@@ -113,8 +157,8 @@ void Main::singlefile(Graph& graph, int problem, int algorithm, std::string outp
         else if (algorithm==1) ret = MST::kruskal(graph,&result);
     }
     else{
-        if(algorithm==0) ret = ShortestPath::dijkstra(graph,&result);
-        else if(algorithm==1) ret = ShortestPath::bellman(graph,&result);
+        if(algorithm==0) ret = ShortestPath::dijkstra(graph,0,graph.get_nodes()-1,&result);
+        else if(algorithm==1) ret = ShortestPath::bellman(graph,0,graph.get_nodes()-1,&result);
     }
     result << ret << std::endl;
     std::cout << graph.toString() << std::endl << result.str() << std::endl;

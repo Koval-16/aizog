@@ -20,6 +20,6 @@ int Timer::stop() {
 }
 
 int Timer::result() {
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time-start_time);
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time-start_time);
     return static_cast<int>(duration.count());
 }

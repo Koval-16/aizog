@@ -18,7 +18,7 @@ void GraphAdjacency::set_nodes(int number) {
     edge_count = 0;
 }
 
-void GraphAdjacency::init() {
+void GraphAdjacency::init(int edges) {
     matrix = new int*[V];
     for(int i=0; i<V; i++) matrix[i] = new int[V]();
 }

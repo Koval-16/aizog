@@ -18,21 +18,18 @@ void GraphIncidence::set_nodes(int number) {
     edge_count = 0;
 }
 
-void GraphIncidence::init() {
+void GraphIncidence::init(int edges) {
     matrix = new int*[V];
-    for(int i=0; i<V; i++) matrix[i] = nullptr;
+    for(int i=0; i<V; i++){
+        matrix[i] = new int[edges]();
+    }
+    max_edges = edges;
 }
 
 void GraphIncidence::add_edge(int v1, int v2, int wage, bool directed) {
-    for(int i=0; i<V; i++){
-        int* temp = new int[edge_count+1];
-        for(int j=0; j<edge_count; j++) temp[j] = matrix[i][j];
-        if(i==v1) temp[edge_count] = wage;
-        else if(i==v2) temp[edge_count] = -wage;
-        else temp[edge_count] = 0;
-        delete[] matrix[i];
-        matrix[i] = temp;
-    }
+    matrix[v1][edge_count] = wage;
+    if(!directed) matrix[v2][edge_count] = -wage;
+    else matrix[v2][edge_count] = -wage;
     edge_count++;
 }
 

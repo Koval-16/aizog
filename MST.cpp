@@ -84,14 +84,37 @@ int MST::kruskal(Graph& graph, std::ostringstream* result) {
 }
 
 void MST::sort(EdgeList& list) {
-    int size = list.get_size();
-    for(int i=0; i<size-1; i++){
-        for(int j=0; j<size-i-1; j++){
-            if(list.get(j)->get_wage() > list.get(j+1)->get_wage()){
-                Edge* temp = list.get(j);
-                list.set(j, list.get(j+1));
-                list.set(j+1, temp);
-            }
+    quick_sort(list, 0, list.get_size()-1);
+}
+
+void MST::quick_sort(EdgeList& list, int left, int right){
+    if(left<right){
+        int q = partition(list, left, right);
+        quick_sort(list,left,q);
+        quick_sort(list,q+1,right);
+    }
+}
+
+int MST::partition(EdgeList& list, int left, int right){
+    int pivot_id = (right+left)/2;
+    Edge* pivot = list.get(pivot_id);
+    int i = left-1;
+    int j = right+1;
+    while(true){
+        do{
+            i++;
+        } while(pivot->get_wage()>list.get(i)->get_wage());
+        do{
+            j--;
+        } while(pivot->get_wage()>list.get(j)->get_wage());
+        if(i<j){
+            Edge* temp = list.get(i);
+            list.set(i,list.get(j));
+            list.set(j,temp);
+        }
+        else{
+            if(j==right) j--;
+            return j;
         }
     }
 }

@@ -19,6 +19,7 @@ public:
     void add_edge(int v1, int v2, int wage);
     void remove_edge(int id);
     Edge* get(int id);
+    Edge** get_array();
     int get_size();
     void set(int id, Edge* edge);
 };

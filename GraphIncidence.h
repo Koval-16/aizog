@@ -13,10 +13,11 @@ private:
     int** matrix;
     int V;
     int edge_count;
+    int max_edges;
 public:
     ~GraphIncidence() override;
     void set_nodes(int number) override;
-    void init() override;
+    void init(int edges) override;
     void add_edge(int v1, int v2, int wage, bool directed) override;
     std::string toString() override;
     void get_all_edges(EdgeList& list, bool directed) override;

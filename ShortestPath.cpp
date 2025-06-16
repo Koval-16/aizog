@@ -9,7 +9,7 @@
 #include <sstream>
 #include "Heap.h"
 
-int ShortestPath::dijkstra(Graph& graph, std::ostringstream* result) {
+int ShortestPath::dijkstra(Graph& graph, int start_node, int end_node, std::ostringstream* result) {
     // 1.Inicjujemy tablicę: wierzchołek początkowy droga=0, pozostałe droga=MAX
     // 2.Dla wszystkich wierzchołków: relaksacja dróg
     // - jeśli krawędź zmniejsza drogę, to aktualizujemy w tablicy
@@ -18,7 +18,7 @@ int ShortestPath::dijkstra(Graph& graph, std::ostringstream* result) {
     // 4.Wyznaczamy ścieżkę od ostatniego
 
     // 1.Inicjujemy tablicę: wierzchołek początkowy droga=0, pozostałe droga=MAX
-    int node = 0;
+    int node = start_node;
     int nodes = graph.get_nodes();
     int dist[nodes];
     int prev[nodes];
@@ -32,24 +32,24 @@ int ShortestPath::dijkstra(Graph& graph, std::ostringstream* result) {
     Heap heap(nodes, dist);
 
     while (!heap.is_empty()) {
-        HeapNode u = heap.extract_min();
-        int n = u.n;
+        HeapNode minimal = heap.extract_min();
+        int min = minimal.n;
 
         EdgeList list;
-        graph.get_edges_from_node(list, n, true);
+        graph.get_edges_from_node(list, min, true);
 
         for (int i = 0; i < list.get_size(); i++) {
             int v = list.get(i)->get_target_node();
             int weight = list.get(i)->get_wage();
-            if (heap.is_in_heap(v) && dist[n] != INT_MAX && dist[n] + weight < dist[v]) {
-                dist[v] = dist[n] + weight;
-                prev[v] = n;
+            if (heap.is_in_heap(v) && dist[min] != INT_MAX && dist[min] + weight < dist[v]) {
+                dist[v] = dist[min] + weight;
+                prev[v] = min;
                 heap.decrease_key(v, dist[v]);
             }
         }
     }
 
-    int end = 2;
+    int end = end_node;
     if (dist[end] == INT_MAX) {
         if (result) *result << "Brak ścieżki z " << node << " do " << end << std::endl;
         return -1;
@@ -67,7 +67,7 @@ int ShortestPath::dijkstra(Graph& graph, std::ostringstream* result) {
     return dist[end];
 }
 
-int ShortestPath::bellman(Graph& graph, std::ostringstream* result) {
+int ShortestPath::bellman(Graph& graph,int start_node, int end_node, std::ostringstream* result) {
     // 1.Tworzymy liste krawędzi
     // 2.Inicjujemy tablicę: wierzchołek początkowy droga=0, reszta=MAX
     // 3.Lecimy po kolei krawędzie, relaksacja, jeśli zmniejsza to do tabeli
@@ -78,7 +78,7 @@ int ShortestPath::bellman(Graph& graph, std::ostringstream* result) {
     graph.get_all_edges(list,true);
 
     // 2.Inicjujemy tablicę: wierzchołek początkowy droga=0, reszta=MAX
-    int node = 0;
+    int node = start_node;
     int bellman_tab[graph.get_nodes()][2]; // [0]<-wartosc, [1]<-wierzcholek
     for(int i=0; i<graph.get_nodes(); i++){
         if(i==node){
@@ -117,7 +117,7 @@ int ShortestPath::bellman(Graph& graph, std::ostringstream* result) {
     }
 
     // 4.Wyznaczamy ścieżkę od ostatniego
-    int end = 2;
+    int end = end_node;
     int value = bellman_tab[end][0];
     int src = bellman_tab[end][1];
     if(result) *result << "Value: " << value << " Path: " << end << " <-- ";

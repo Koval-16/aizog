@@ -46,3 +46,7 @@ int EdgeList::get_size() {
 void EdgeList::set(int id, Edge *edge) {
     edges[id] = edge;
 }
+
+Edge **EdgeList::get_array() {
+    return edges;
+}

@@ -23,7 +23,7 @@ void GraphList::set_nodes(int number) {
     edge_count = 0;
 }
 
-void GraphList::init() {
+void GraphList::init(int edges) {
     adj = new Successor*[V];
     for(int i=0; i<V; i++){
         adj[i] = nullptr;

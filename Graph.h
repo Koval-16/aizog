@@ -14,7 +14,7 @@ private:
 public:
     virtual ~Graph() = default;
     virtual void set_nodes(int number) = 0;
-    virtual void init() = 0;
+    virtual void init(int edges) = 0;
     virtual void add_edge(int v1, int v2, int wage, bool directed) = 0;
     virtual std::string toString() = 0;
     virtual void get_all_edges(EdgeList& list, bool directed) = 0;

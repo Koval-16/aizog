@@ -20,15 +20,16 @@ void RandomHandler::generate_graph(int nodes, float density,GraphAdjacency& grap
     graph_inc.set_nodes(nodes);
     graph_list.set_nodes(nodes);
 
-    graph_adj.init();
-    graph_inc.init();
-    graph_list.init();
+    graph_adj.init(edges);
+    graph_inc.init(edges);
+    graph_list.init(edges);
     int connected_nodes[nodes];
     int connected_size = 0;
     int waiting_room[nodes];
     int waiting_size = nodes;
 
     for(int i=0; i<nodes; i++) waiting_room[i] = i;
+
 
     // Creating first spanning tree (enough for undirected)
     connected_nodes[connected_size++] = 0;
@@ -46,12 +47,12 @@ void RandomHandler::generate_graph(int nodes, float density,GraphAdjacency& grap
         current_edges++;
     }
 
+
     if(directed){
         int no_out_edges[nodes];
         int no_out_size = 0;
         for(int i=0; i<nodes; i++){
             if(!graph_adj.has_edges_from_node(i,directed)){
-                std::cout << i << std::endl;
                 no_out_edges[no_out_size++] = i;
             }
 
@@ -76,6 +77,7 @@ void RandomHandler::generate_graph(int nodes, float density,GraphAdjacency& grap
             current_edges++;
         }
     }
+
 
     // Creating other edges
     int** list_of_edges = new int*[max_edges];
@@ -116,32 +118,5 @@ void RandomHandler::generate_graph(int nodes, float density,GraphAdjacency& grap
         delete[] list_of_edges[i];
     }
     delete[] list_of_edges;
-}
-
-int* RandomHandler::add_number(int *tab, int &size, int number) {
-    int* new_tab = new int[size+1];
-    for(int i=0; i<size; i++) new_tab[i] = tab[i];
-    new_tab[size] = number;
-    delete[] tab;
-    size++;
-    return new_tab;
-}
-
-int RandomHandler::remove_number(int *&tab, int &size, int position){
-    int* new_tab = new int[size-1];
-    int new_size = 0;
-    int removed_number;
-    for(int i=0; i<size; i++){
-        if(i!=position){
-            new_tab[new_size] = tab[i];
-            new_size++;
-        }
-        else{
-            removed_number = tab[i];
-        }
-    }
-    delete[] tab;
-    tab = new_tab;
-    size--;
-    return removed_number;
+    std::cout << "end" << std::endl;
 }
