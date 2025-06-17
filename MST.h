@@ -1,12 +1,9 @@
-//
-// Created by kuba on 23.05.2025.
-//
-
 #ifndef AIZOGRAF_MST_H
 #define AIZOGRAF_MST_H
 #include "Graph.h"
 #include "EdgeList.h"
 
+// Class MST has algorithms which calculate Minimal Spanning Tree
 class MST {
 public:
     static int prim(Graph& graph, std::ostringstream* result= nullptr);

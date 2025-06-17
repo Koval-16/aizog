@@ -1,7 +1,3 @@
-//
-// Created by kuba on 28.03.2025.
-//
-
 #include "Timer.h"
 
 Timer::Timer() = default;

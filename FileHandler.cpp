@@ -1,13 +1,10 @@
-//
-// Created by kuba on 19.05.2025.
-//
-
 #include "FileHandler.h"
 #include "Graph.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 
+// reads input data from file
 void FileHandler::read_file(std::string &filename, Graph &graph, bool directed) {
     std::ifstream file(filename);
     if (!file.is_open()) throw std::runtime_error("Failed to open the file.");
@@ -41,6 +38,7 @@ void FileHandler::read_file(std::string &filename, Graph &graph, bool directed) 
     }
 }
 
+// saves results of single file test to the output file
 void FileHandler::save_to_file(std::string &filename, Graph &graph, std::string text) {
     std::ofstream file(filename, std::ios::app);
     file << graph.toString() << std::endl;
@@ -48,6 +46,7 @@ void FileHandler::save_to_file(std::string &filename, Graph &graph, std::string 
     file.close();
 }
 
+// saves results of benchmark mode to the output file
 void FileHandler::save_test(std::string &filename,int representation, int i, int problem, int algorithm, int nodes, float density, int time) {
     std::ifstream file1(filename);
     int count = 0;
@@ -76,6 +75,4 @@ void FileHandler::save_test(std::string &filename,int representation, int i, int
     file2 << nodes << "\t";
     file2 << density << "\t";
     file2 << time;
-
-
 }

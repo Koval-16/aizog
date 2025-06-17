@@ -12,10 +12,10 @@ public:
     static void start(int arg_number, char* arg_values[]);
 private:
     static void help_mode();
-    static void file_mode(int problem, int algorithm, std::string input, std::string output);
+    static void file_mode(int problem, int algorithm, std::string input, std::string output, int start_node, int end_node);
     static void test_mode(int problem, int algorithm, int number, float denisty, int iterations, std::string output, int start_node, int end_node);
     static int testing(Graph& graph, int problem, int algorithm, int start_node, int end_node);
-    static void singlefile(Graph& graph, int problem, int algorithm, std::string output);
+    static void singlefile(Graph& graph, int problem, int algorithm, std::string output, int start_node, int end_node);
 };
 
 

@@ -1,7 +1,3 @@
-//
-// Created by kuba on 25.05.2025.
-//
-
 #include "GraphAdjacency.h"
 #include <iostream>
 #include <sstream>

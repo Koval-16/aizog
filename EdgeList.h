@@ -1,11 +1,8 @@
-//
-// Created by kuba on 24.05.2025.
-//
-
 #ifndef AIZOGRAF_EDGELIST_H
 #define AIZOGRAF_EDGELIST_H
 #include "Edge.h"
 
+// List storing edges
 class EdgeList {
 private:
     Edge** edges;

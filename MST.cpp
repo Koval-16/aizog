@@ -1,7 +1,3 @@
-//
-// Created by kuba on 23.05.2025.
-//
-
 #include "MST.h"
 #include <iostream>
 #include <sstream>
@@ -106,7 +102,7 @@ int MST::partition(EdgeList& list, int left, int right){
         } while(pivot->get_wage()>list.get(i)->get_wage());
         do{
             j--;
-        } while(pivot->get_wage()>list.get(j)->get_wage());
+        } while(pivot->get_wage()<list.get(j)->get_wage());
         if(i<j){
             Edge* temp = list.get(i);
             list.set(i,list.get(j));

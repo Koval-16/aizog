@@ -1,7 +1,3 @@
-//
-// Created by kuba on 23.05.2025.
-//
-
 #include "ShortestPath.h"
 #include "Math.h"
 #include "EdgeList.h"
@@ -38,13 +34,13 @@ int ShortestPath::dijkstra(Graph& graph, int start_node, int end_node, std::ostr
         EdgeList list;
         graph.get_edges_from_node(list, min, true);
 
-        for (int i = 0; i < list.get_size(); i++) {
-            int v = list.get(i)->get_target_node();
+        for (int i=0; i < list.get_size(); i++) {
+            int target = list.get(i)->get_target_node();
             int weight = list.get(i)->get_wage();
-            if (heap.is_in_heap(v) && dist[min] != INT_MAX && dist[min] + weight < dist[v]) {
-                dist[v] = dist[min] + weight;
-                prev[v] = min;
-                heap.decrease_key(v, dist[v]);
+            if (heap.is_in_heap(target) && dist[min]!=INT_MAX && dist[min]+weight<dist[target]){
+                dist[target] = dist[min]+weight;
+                prev[target] = min;
+                heap.decrease_key(target, dist[target]);
             }
         }
     }

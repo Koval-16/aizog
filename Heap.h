@@ -1,11 +1,13 @@
 #ifndef AIZOG_HEAP_H
 #define AIZOG_HEAP_H
 
+// Struct representing single node in heap
 struct HeapNode {
-    int n;     // numer wierzchołka
-    int key;   // klucz (priorytet)
+    int n;
+    int key;
 };
 
+// Heap is used as a prio-queue, it's used in Prim and Dijkstra algorithms and increases their speed
 class Heap {
 public:
     Heap(int nodes, int* key);

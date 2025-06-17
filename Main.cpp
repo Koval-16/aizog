@@ -31,9 +31,11 @@ void Main::start(int arg_number, char* arg_values[]){
             int algorithm = std::stoi(arg_values[3]);
             std::string input = arg_values[4];
             std::string output = arg_values[5];
+            int start_node = (arg_number>=7) ? std::stoi(arg_values[6]) : 0;
+            int end_node = (arg_number>=8) ? std::stoi(arg_values[7]) : 1;
             if(problem<0 || problem>1) throw std::exception();
             if(algorithm<0 || algorithm>1) throw std::exception();
-            file_mode(problem,algorithm,input,output);
+            file_mode(problem,algorithm,input,output,start_node,end_node);
         } catch (...){
             help_mode();
         }
@@ -46,9 +48,9 @@ void Main::start(int arg_number, char* arg_values[]){
             int number_of_nodes = std::stoi(arg_values[4]);
             float density = std::stof(arg_values[5]);
             int iterations = std::stoi(arg_values[6]);
-            int start_node = (arg_number>=8) ? std::stoi(arg_values[7]) : 0;
-            int end_node = (arg_number>=9) ? std::stoi(arg_values[8]) : number_of_nodes-1;
             std::string output = arg_values[7];
+            int start_node = (arg_number>=9) ? std::stoi(arg_values[8]) : 0;
+            int end_node = (arg_number>=10) ? std::stoi(arg_values[9]) : number_of_nodes-1;
             if(problem<0 || problem>1) throw std::exception();
             if(algorithm<0 || algorithm>1) throw std::exception();
             if(density<0 || density>1) throw std::exception();
@@ -92,7 +94,7 @@ void Main::help_mode(){
                  "\t./aizo --help\n" << std::endl;
 }
 
-void Main::file_mode(int problem, int algorithm, std::string input, std::string output) {
+void Main::file_mode(int problem, int algorithm, std::string input, std::string output, int start_node, int end_node) {
     GraphAdjacency graph_adj;
     GraphIncidence graph_inc;
     GraphList graph_list;
@@ -106,9 +108,9 @@ void Main::file_mode(int problem, int algorithm, std::string input, std::string 
         FileHandler::read_file(input,graph_inc,true);
         FileHandler::read_file(input,graph_list,true);
     }
-    singlefile(graph_inc,problem,algorithm,output);
-    singlefile(graph_list,problem,algorithm,output);
-    singlefile(graph_adj,problem,algorithm,output);
+    singlefile(graph_inc,problem,algorithm,output,start_node,end_node);
+    singlefile(graph_list,problem,algorithm,output,start_node,end_node);
+    singlefile(graph_adj,problem,algorithm,output,start_node,end_node);
 }
 
 void Main::test_mode(int problem, int algorithm, int number, float density, int iterations, std::string output, int start_node, int end_node) {
@@ -149,7 +151,7 @@ int Main::testing(Graph& graph, int problem, int algorithm, int start_node, int 
     return timer.result();
 }
 
-void Main::singlefile(Graph& graph, int problem, int algorithm, std::string output){
+void Main::singlefile(Graph& graph, int problem, int algorithm, std::string output, int start_node, int end_node){
     std::ostringstream result;
     int ret;
     if(problem==0){
@@ -157,8 +159,8 @@ void Main::singlefile(Graph& graph, int problem, int algorithm, std::string outp
         else if (algorithm==1) ret = MST::kruskal(graph,&result);
     }
     else{
-        if(algorithm==0) ret = ShortestPath::dijkstra(graph,0,graph.get_nodes()-1,&result);
-        else if(algorithm==1) ret = ShortestPath::bellman(graph,0,graph.get_nodes()-1,&result);
+        if(algorithm==0) ret = ShortestPath::dijkstra(graph,start_node,end_node,&result);
+        else if(algorithm==1) ret = ShortestPath::bellman(graph,start_node,end_node,&result);
     }
     result << ret << std::endl;
     std::cout << graph.toString() << std::endl << result.str() << std::endl;

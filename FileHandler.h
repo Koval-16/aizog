@@ -1,7 +1,3 @@
-//
-// Created by kuba on 19.05.2025.
-//
-
 #ifndef AIZOGRAF_FILEHANDLER_H
 #define AIZOGRAF_FILEHANDLER_H
 

@@ -1,13 +1,10 @@
-//
-// Created by kuba on 25.05.2025.
-//
-
 #ifndef AIZOG_GRAPHLIST_H
 #define AIZOG_GRAPHLIST_H
 #include "Graph.h"
 #include "Edge.h"
 #include <iostream>
 
+// Struct which represents a single successor in node's list
 struct Successor {
     int node;
     int wage;
@@ -17,6 +14,7 @@ struct Successor {
             : node(n), wage(w), next(nxt) {}
 };
 
+// Graph is represented by Adjacency List
 class GraphList : public Graph {
 private:
     Successor** adj;

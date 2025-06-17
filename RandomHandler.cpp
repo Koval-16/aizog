@@ -1,7 +1,3 @@
-//
-// Created by kuba on 19.05.2025.
-//
-
 #include "RandomHandler.h"
 #include "Graph.h"
 #include "GraphAdjacency.h"
@@ -21,15 +17,16 @@ void RandomHandler::generate_graph(int nodes, float density,GraphAdjacency& grap
     graph_list.set_nodes(nodes);
 
     graph_adj.init(edges);
-    graph_inc.init(edges);
     graph_list.init(edges);
+    graph_inc.init(edges);
+
+
     int connected_nodes[nodes];
     int connected_size = 0;
     int waiting_room[nodes];
     int waiting_size = nodes;
 
     for(int i=0; i<nodes; i++) waiting_room[i] = i;
-
 
     // Creating first spanning tree (enough for undirected)
     connected_nodes[connected_size++] = 0;
@@ -46,7 +43,6 @@ void RandomHandler::generate_graph(int nodes, float density,GraphAdjacency& grap
         graph_list.add_edge(connected_nodes[pos_1],removed,wage,directed);
         current_edges++;
     }
-
 
     if(directed){
         int no_out_edges[nodes];
@@ -77,7 +73,6 @@ void RandomHandler::generate_graph(int nodes, float density,GraphAdjacency& grap
             current_edges++;
         }
     }
-
 
     // Creating other edges
     int** list_of_edges = new int*[max_edges];
@@ -118,5 +113,4 @@ void RandomHandler::generate_graph(int nodes, float density,GraphAdjacency& grap
         delete[] list_of_edges[i];
     }
     delete[] list_of_edges;
-    std::cout << "end" << std::endl;
 }

@@ -1,13 +1,9 @@
-//
-// Created by kuba on 25.05.2025.
-//
-
 #ifndef AIZOG_GRAPHINCIDENCE_H
 #define AIZOG_GRAPHINCIDENCE_H
 #include "Graph.h"
 #include <iostream>
 
-
+// Graph is represented by Incidence Matrix
 class GraphIncidence : public Graph{
 private:
     int** matrix;

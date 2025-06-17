@@ -1,11 +1,8 @@
-//
-// Created by kuba on 28.03.2025.
-//
-
 #ifndef AIZO_TIMER_H
 #define AIZO_TIMER_H
 #include <chrono>
 
+// Measures time
 class Timer {
 public:
     Timer();

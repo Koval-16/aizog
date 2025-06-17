@@ -1,11 +1,7 @@
-//
-// Created by kuba on 25.05.2025.
-//
-
 #ifndef AIZOG_EDGE_H
 #define AIZOG_EDGE_H
 
-
+// Represents edge, two nodes and the wage
 class Edge {
 private:
     int node;

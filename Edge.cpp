@@ -1,7 +1,3 @@
-//
-// Created by kuba on 25.05.2025.
-//
-
 #include "Edge.h"
 
 int Edge::get_node() {

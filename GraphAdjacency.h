@@ -1,12 +1,9 @@
-//
-// Created by kuba on 25.05.2025.
-//
-
 #ifndef AIZOG_GRAPHADJACENCY_H
 #define AIZOG_GRAPHADJACENCY_H
 #include "Graph.h"
 #include <iostream>
 
+// Graph is represented by Adjacency Matrix
 class GraphAdjacency : public Graph {
 private:
     int V;
