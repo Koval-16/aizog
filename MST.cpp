@@ -52,23 +52,18 @@ int MST::prim(Graph& graph, std::ostringstream* result) {
 
 int MST::kruskal(Graph& graph, std::ostringstream* result) {
     int mst = 0;
-    // 1.tworzymy listę krawędzi grafu
     EdgeList list;
     graph.get_all_edges(list,false);
-    // 2.sortujemy krawędzie w tej liście wg ich wag
     sort(list);
-    // 3.nadajemy unikalne kolory węzłom grafu (identyfikacja cykli)
     Disjoint dis(graph.get_nodes());
-    // 4.wybieramy kolejne krawędzie grafu zachłannie
-    // 5.jeżeli co najmniej jeden z węzłów ma inny kolor niż kolor grafu, to dołączamy
-    // 6.musimy dodać n-1 krawędzi
+
     int edges_added = 0;
     int index = 0;
     while(edges_added<graph.get_nodes()-1 && index < graph.get_edges_number()){
         int v1 = list.get(index)->get_node();
         int v2 = list.get(index)->get_target_node();
         int wage = list.get(index)->get_wage();
-        if (dis.find_set(v1)!=dis.find_set(v2)) {  // tylko jeśli były w innych zbiorach
+        if (dis.find_set(v1)!=dis.find_set(v2)) {
             mst += wage;
             edges_added++;
             dis.union_set(v1,v2);

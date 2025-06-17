@@ -6,14 +6,6 @@
 #include "Heap.h"
 
 int ShortestPath::dijkstra(Graph& graph, int start_node, int end_node, std::ostringstream* result) {
-    // 1.Inicjujemy tablicę: wierzchołek początkowy droga=0, pozostałe droga=MAX
-    // 2.Dla wszystkich wierzchołków: relaksacja dróg
-    // - jeśli krawędź zmniejsza drogę, to aktualizujemy w tablicy
-    // 3.Gdy zakończymy relaksację krawedzi danego wierzchołka, to:
-    // - usuwamy go z puli, a następny wierzchołek to ten o aktualnie najmniejszej drodze
-    // 4.Wyznaczamy ścieżkę od ostatniego
-
-    // 1.Inicjujemy tablicę: wierzchołek początkowy droga=0, pozostałe droga=MAX
     int node = start_node;
     int nodes = graph.get_nodes();
     int dist[nodes];
@@ -64,18 +56,11 @@ int ShortestPath::dijkstra(Graph& graph, int start_node, int end_node, std::ostr
 }
 
 int ShortestPath::bellman(Graph& graph,int start_node, int end_node, std::ostringstream* result) {
-    // 1.Tworzymy liste krawędzi
-    // 2.Inicjujemy tablicę: wierzchołek początkowy droga=0, reszta=MAX
-    // 3.Lecimy po kolei krawędzie, relaksacja, jeśli zmniejsza to do tabeli
-    // 4.Tyle iteracji ile wierzchołków
-
-    // 1.Tworzymy liste krawędzi
     EdgeList list;
     graph.get_all_edges(list,true);
 
-    // 2.Inicjujemy tablicę: wierzchołek początkowy droga=0, reszta=MAX
     int node = start_node;
-    int bellman_tab[graph.get_nodes()][2]; // [0]<-wartosc, [1]<-wierzcholek
+    int bellman_tab[graph.get_nodes()][2];
     for(int i=0; i<graph.get_nodes(); i++){
         if(i==node){
             bellman_tab[i][0] = 0;
@@ -86,9 +71,6 @@ int ShortestPath::bellman(Graph& graph,int start_node, int end_node, std::ostrin
             bellman_tab[i][1] = -1;
         }
     }
-
-    // 3.Lecimy po kolei krawędzie, relaksacja, jeśli zmniejsza to do tabeli
-    // 4.Tyle iteracji ile wierzchołków
     for(int i=0; i<graph.get_nodes()-1; i++){
         for(int j=0; j<list.get_size(); j++){
             int source = list.get(j)->get_node();
@@ -112,7 +94,6 @@ int ShortestPath::bellman(Graph& graph,int start_node, int end_node, std::ostrin
         }
     }
 
-    // 4.Wyznaczamy ścieżkę od ostatniego
     int end = end_node;
     int value = bellman_tab[end][0];
     int src = bellman_tab[end][1];
