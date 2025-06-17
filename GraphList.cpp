@@ -95,3 +95,13 @@ bool GraphList::has_edges_from_node(int node, bool directed) {
     if(curr!= nullptr) return true;
     return false;
 }
+
+int GraphList::get_edges_number_from_node(int node, bool directed) {
+    int counter = 0;
+    Successor* curr = adj[node];
+    while (curr != nullptr) {
+        counter++;
+        curr = curr->next;
+    }
+    return counter;
+}

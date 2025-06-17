@@ -21,6 +21,7 @@ public:
     virtual int get_edges_number() = 0; // returns number of edges
     virtual void get_edges_from_node(EdgeList &list, int node, bool directed) = 0; // gets edges from specified node
     virtual bool has_edges_from_node(int node, bool directed) = 0; // checks if given node has any edges from
+    virtual int get_edges_number_from_node(int node, bool directed) = 0;
 };
 
 

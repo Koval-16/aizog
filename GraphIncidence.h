@@ -22,6 +22,7 @@ public:
     int get_edges_number() override;
     void get_edges_from_node(EdgeList &list, int node, bool directed) override;
     bool has_edges_from_node(int node, bool directed) override;
+    int get_edges_number_from_node(int node, bool directed) override;
 };
 
 

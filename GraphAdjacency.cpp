@@ -90,3 +90,16 @@ bool GraphAdjacency::has_edges_from_node(int node, bool directed) {
     }
     return false;
 }
+
+int GraphAdjacency::get_edges_number_from_node(int node, bool directed) {
+    int counter = 0;
+    for(int j = 0; j < V; j++) {
+        if (j != node) {
+            int wage = get_edge(node, j);
+            if (wage != 0) {
+                counter++;
+            }
+        }
+    }
+    return counter;
+}

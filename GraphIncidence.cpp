@@ -95,7 +95,6 @@ void GraphIncidence::get_edges_from_node(EdgeList &list, int node, bool directed
     for (int i = 0; i < edge_count; i++) {
         int wage = matrix[node][i];
 
-        // Sprawdź, czy node jest źródłem krawędzi (w przypadku skierowanego grafu)
         if (wage > 0 || (!directed && wage != 0)) {
             int target = -1;
             for (int j = 0; j < V; j++) {
@@ -128,4 +127,25 @@ bool GraphIncidence::has_edges_from_node(int node, bool directed) {
         }
     }
     return false;
+}
+
+int GraphIncidence::get_edges_number_from_node(int node, bool directed) {
+    int counter = 0;
+    for (int i = 0; i < edge_count; i++) {
+        int wage = matrix[node][i];
+
+        if (wage > 0 || (!directed && wage != 0)) {
+            int target = -1;
+            for (int j = 0; j < V; j++) {
+                if (j != node && matrix[j][i] != 0) {
+                    target = j;
+                    break;
+                }
+            }
+            if (target != -1) {
+                counter++;
+            }
+        }
+    }
+    return counter;
 }

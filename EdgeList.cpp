@@ -24,11 +24,21 @@ void EdgeList::remove_edge(int id) {
 }
 
 void EdgeList::resize(){
+    if(size<capacity) return;
     capacity++;
     Edge** new_edges = new Edge*[capacity];
     for(int i=0; i<size; i++) new_edges[i] = edges[i];
     delete[] edges;
     edges = new_edges;
+}
+
+void EdgeList::set_capacity(int set){
+    if(set<capacity) return;
+    Edge** new_edges = new Edge*[set];
+    for(int i=0; i<size; i++) new_edges[i] = edges[i];
+    delete[] edges;
+    edges = new_edges;
+    capacity = set;
 }
 
 Edge *EdgeList::get(int id) {

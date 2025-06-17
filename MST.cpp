@@ -29,6 +29,7 @@ int MST::prim(Graph& graph, std::ostringstream* result) {
         }
         in_mst[minimum.n] = true;
         EdgeList list;
+        list.set_capacity(graph.get_edges_number_from_node(minimum.n,false));
         graph.get_edges_from_node(list,minimum.n,false);
         for(int u=0; u<list.get_size(); u++){
             int target = list.get(u)->get_target_node();
@@ -53,9 +54,11 @@ int MST::prim(Graph& graph, std::ostringstream* result) {
 int MST::kruskal(Graph& graph, std::ostringstream* result) {
     int mst = 0;
     EdgeList list;
+    list.set_capacity(graph.get_edges_number());
     graph.get_all_edges(list,false);
     sort(list);
     Disjoint dis(graph.get_nodes());
+    int v = graph.get_nodes();
 
     int edges_added = 0;
     int index = 0;

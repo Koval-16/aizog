@@ -24,6 +24,7 @@ int ShortestPath::dijkstra(Graph& graph, int start_node, int end_node, std::ostr
         int min = minimal.n;
 
         EdgeList list;
+        list.set_capacity(graph.get_edges_number_from_node(min,false));
         graph.get_edges_from_node(list, min, true);
 
         for (int i=0; i < list.get_size(); i++) {
@@ -57,10 +58,12 @@ int ShortestPath::dijkstra(Graph& graph, int start_node, int end_node, std::ostr
 
 int ShortestPath::bellman(Graph& graph,int start_node, int end_node, std::ostringstream* result) {
     EdgeList list;
+    list.set_capacity(graph.get_edges_number());
     graph.get_all_edges(list,true);
 
     int node = start_node;
-    int bellman_tab[graph.get_nodes()][2];
+    int v = graph.get_nodes();
+    int bellman_tab[v][2];
     for(int i=0; i<graph.get_nodes(); i++){
         if(i==node){
             bellman_tab[i][0] = 0;
