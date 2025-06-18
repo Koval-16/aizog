@@ -129,9 +129,9 @@ void Main::test_mode(int problem, int algorithm, int number, float density, int 
         int t2 = testing(graph_inc,problem,algorithm,start_node,end_node);
         int t3 = testing(graph_list,problem,algorithm,start_node,end_node);
         FileHandler::save_test(output,id,0,problem,algorithm,number,density,t1);
-        FileHandler::save_test(output,id+1,1,problem,algorithm,number,density,t2);
-        FileHandler::save_test(output,id+2,2,problem,algorithm,number,density,t3);
-        id+=3;
+        FileHandler::save_test(output,id,1,problem,algorithm,number,density,t2);
+        FileHandler::save_test(output,id,2,problem,algorithm,number,density,t3);
+        id++;
     }
 }
 

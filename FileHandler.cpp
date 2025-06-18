@@ -47,7 +47,7 @@ void FileHandler::save_to_file(std::string &filename, Graph &graph, std::string 
 }
 
 // saves results of benchmark mode to the output file
-void FileHandler::save_test(std::string &filename,int representation, int i, int problem, int algorithm, int nodes, float density, int time) {
+void FileHandler::save_test(std::string &filename,int i, int representation, int problem, int algorithm, int nodes, float density, int time) {
     std::ifstream file1(filename);
     int count = 0;
     std::string line;
@@ -75,4 +75,5 @@ void FileHandler::save_test(std::string &filename,int representation, int i, int
     file2 << nodes << "\t";
     file2 << density << "\t";
     file2 << time;
+    file2.close();
 }
