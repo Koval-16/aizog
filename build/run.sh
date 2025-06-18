@@ -3,9 +3,9 @@
 # Parametry wejsciowe
 problems=(0 1)
 algorithms=(0 1)
-nodes=(100 250 500 750 1000 1250 1500 1750)
+nodes=(100 250 500 750 1000 1250 1500 1750 2000)
 densities=(0.1 0.25 0.5 0.75 0.99)
-iterations=1
+iterations=50
 
 # Tworzymy katalog na wyniki (jesli nie istnieje)
 mkdir -p results
