@@ -71,7 +71,7 @@ int GraphList::get_edge(int v1, int v2) {
         }
         curr = curr->next;
     }
-    return 0; // brak takiej krawędzi
+    return INT_MAX; // brak takiej krawędzi
 }
 
 int GraphList::get_nodes() {

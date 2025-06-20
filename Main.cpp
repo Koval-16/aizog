@@ -152,8 +152,11 @@ int Main::testing(Graph& graph, int problem, int algorithm, int start_node, int 
 }
 
 void Main::singlefile(Graph& graph, int problem, int algorithm, std::string output, int start_node, int end_node){
+    Timer timer;
+    timer.reset();
     std::ostringstream result;
     int ret;
+    timer.start();
     if(problem==0){
         if(algorithm==0) ret = MST::prim(graph,&result);
         else if (algorithm==1) ret = MST::kruskal(graph,&result);
@@ -162,7 +165,9 @@ void Main::singlefile(Graph& graph, int problem, int algorithm, std::string outp
         if(algorithm==0) ret = ShortestPath::dijkstra(graph,start_node,end_node,&result);
         else if(algorithm==1) ret = ShortestPath::bellman(graph,start_node,end_node,&result);
     }
+    timer.stop();
     result << ret << std::endl;
+    result << "Czas w mikrosekundach: " << timer.result() << std::endl;
     std::cout << graph.toString() << std::endl << result.str() << std::endl;
     FileHandler::save_to_file(output,graph,result.str());
 }

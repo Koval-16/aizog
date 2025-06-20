@@ -16,13 +16,6 @@ void EdgeList::add_edge(int v1, int v2, int wage) {
     edges[size++] = new Edge(v1,v2,wage);
 }
 
-void EdgeList::remove_edge(int id) {
-    delete edges[id];
-    for(int i=id; i<size-1; i++) edges[i]=edges[i+1];
-    size--;
-    capacity--;
-}
-
 void EdgeList::resize(){
     if(size<capacity) return;
     capacity++;
@@ -51,8 +44,4 @@ int EdgeList::get_size() {
 
 void EdgeList::set(int id, Edge *edge) {
     edges[id] = edge;
-}
-
-Edge **EdgeList::get_array() {
-    return edges;
 }

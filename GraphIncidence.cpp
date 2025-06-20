@@ -60,10 +60,11 @@ void GraphIncidence::get_all_edges(EdgeList &list, bool directed) {
             }
         }
 
-        // Sprawdzenie poprawności
         if (v1 != -1 && v2 != -1) {
             if (wage < 0) {
-                std::swap(v1, v2);
+                int temp = v1;
+                v1 = v2;
+                v2 = temp;
                 wage = -wage;
             }
             list.add_edge(v1, v2, wage);
@@ -80,7 +81,7 @@ int GraphIncidence::get_edge(int v1, int v2) {
             else return node2;
         }
     }
-    return 0;
+    return INT_MAX;
 }
 
 int GraphIncidence::get_nodes() {
@@ -92,7 +93,6 @@ int GraphIncidence::get_edges_number() {
 }
 
 void GraphIncidence::get_edges_from_node(EdgeList &list, int node, bool directed) {
-    std::cout << "starten " << node << std::endl;
     for (int i = 0; i < edge_count; i++) {
         int wage = matrix[node][i];
 
@@ -110,7 +110,6 @@ void GraphIncidence::get_edges_from_node(EdgeList &list, int node, bool directed
             }
         }
     }
-    std::cout << "das end " << node << std::endl;
 }
 
 bool GraphIncidence::has_edges_from_node(int node, bool directed) {

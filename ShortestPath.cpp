@@ -100,6 +100,10 @@ int ShortestPath::bellman(Graph& graph,int start_node, int end_node, std::ostrin
     int end = end_node;
     int value = bellman_tab[end][0];
     int src = bellman_tab[end][1];
+    if (value == INT_MAX) {
+        if (result) *result << "Brak ścieżki z " << node << " do " << end << std::endl;
+        return -1;
+    }
     if(result) *result << "Value: " << value << " Path: " << end << " <-- ";
     while(src!=node){
         if(result) *result << src << " <-- ";
