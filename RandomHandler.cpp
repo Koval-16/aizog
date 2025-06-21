@@ -56,13 +56,7 @@ void RandomHandler::generate_graph(int nodes, float density,GraphAdjacency& grap
         int iteration = 0;
         while(no_out_size!=0){
             int pos_1 = rand()%no_out_size;
-            int pos_2;
-            if(iteration==0) pos_2=0;
-            else{
-                do {
-                    pos_2 = rand()%nodes;
-                } while (pos_2==no_out_edges[pos_1]);
-            }
+            int pos_2=0;
             iteration++;
             int chosen = no_out_edges[pos_1];
             no_out_edges[pos_1] = no_out_edges[--no_out_size];

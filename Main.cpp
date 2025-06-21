@@ -14,12 +14,7 @@
 
 int main(int arg_number, char* arg_values[]) {
     srand(time(0));
-    try{
-        Main::start(arg_number,arg_values);
-    } catch(...){
-        std::cout << "huh?" << std::endl;
-        return 0;
-    }
+    Main::start(arg_number,arg_values);
     return 0;
 }
 
@@ -40,11 +35,8 @@ void Main::start(int arg_number, char* arg_values[]){
             int end_node = (arg_number>=8) ? std::stoi(arg_values[7]) : 1;
             if(problem<0 || problem>1) throw std::exception();
             if(algorithm<0 || algorithm>1) throw std::exception();
-            std::cout << "111" << std::endl;
             file_mode(problem,algorithm,input,output,start_node,end_node);
-            std::cout << "222" << std::endl;
         } catch (const std::exception &e){
-            std::cout << "Błąd: " << e.what() << std::endl;
             help_mode();
         }
     }
@@ -121,7 +113,6 @@ void Main::file_mode(int problem, int algorithm, std::string input, std::string 
         std::cout << "Exception occurred during reading the file." << std::endl;
         throw std::runtime_error("Błąd wczytywania pliku");
     }
-    std::cout << "nie catch" << std::endl;
     singlefile(graph_inc,problem,algorithm,output,start_node,end_node);
     singlefile(graph_list,problem,algorithm,output,start_node,end_node);
     singlefile(graph_adj,problem,algorithm,output,start_node,end_node);
@@ -183,6 +174,5 @@ void Main::singlefile(Graph& graph, int problem, int algorithm, std::string outp
     result << ret << std::endl;
     result << "Czas w mikrosekundach: " << timer.result() << std::endl;
     std::cout << graph.toString() << std::endl << result.str() << std::endl;
-    std::cout << result.str() << std::endl;
     FileHandler::save_to_file(output,graph,result.str());
 }
