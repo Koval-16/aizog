@@ -1,0 +1,66 @@
+Macierz Incydencji
+
+0
+Czas w mikrosekundach: 12
+
+Macierz Incydencji
+
+0
+Czas w mikrosekundach: 14
+
+Macierz Incydencji
+
+0
+Czas w mikrosekundach: 32
+
+Macierz Incydencji
+
+0
+Czas w mikrosekundach: 16
+
+Lista nastepnikow
+
+0
+Czas w mikrosekundach: 0
+
+Macierz Incydencji
+
+0
+Czas w mikrosekundach: 17
+
+Lista nastepnikow
+
+0
+Czas w mikrosekundach: 3
+
+Macierz Incydencji
+
+0
+Czas w mikrosekundach: 17
+
+Lista nastepnikow
+
+0
+Czas w mikrosekundach: 0
+
+Macierz Incydencji
+
+
+
+2147483647
+Czas w mikrosekundach: 11
+
+Lista nastepnikow
+0: 
+1: 
+
+2147483647
+Czas w mikrosekundach: 1
+
+Macierz Sasiedztwa
+0	0	
+0	0	
+
+2147483647
+Czas w mikrosekundach: 1
+

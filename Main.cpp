@@ -14,7 +14,12 @@
 
 int main(int arg_number, char* arg_values[]) {
     srand(time(0));
-    Main::start(arg_number,arg_values);
+    try{
+        Main::start(arg_number,arg_values);
+    } catch(...){
+        std::cout << "huh?" << std::endl;
+        return 0;
+    }
     return 0;
 }
 
@@ -35,11 +40,13 @@ void Main::start(int arg_number, char* arg_values[]){
             int end_node = (arg_number>=8) ? std::stoi(arg_values[7]) : 1;
             if(problem<0 || problem>1) throw std::exception();
             if(algorithm<0 || algorithm>1) throw std::exception();
+            std::cout << "111" << std::endl;
             file_mode(problem,algorithm,input,output,start_node,end_node);
-        } catch (...){
+            std::cout << "222" << std::endl;
+        } catch (const std::exception &e){
+            std::cout << "Błąd: " << e.what() << std::endl;
             help_mode();
         }
-
     }
     else if(mode=="--test"){
         try{
@@ -56,7 +63,7 @@ void Main::start(int arg_number, char* arg_values[]){
             if(density<0 || density>1) throw std::exception();
             if(iterations<=0) throw std::exception();
             test_mode(problem,algorithm,number_of_nodes,density,iterations,output,start_node,end_node);
-        } catch (...){
+        } catch (std::exception &e){
             help_mode();
         }
     }
@@ -98,16 +105,23 @@ void Main::file_mode(int problem, int algorithm, std::string input, std::string 
     GraphAdjacency graph_adj;
     GraphIncidence graph_inc;
     GraphList graph_list;
-    if(problem==0){
-        FileHandler::read_file(input, graph_adj, false);
-        FileHandler::read_file(input, graph_inc, false);
-        FileHandler::read_file(input, graph_list, false);
+    try{
+        if(problem==0){
+            FileHandler::read_file(input, graph_adj, false);
+            FileHandler::read_file(input, graph_inc, false);
+            FileHandler::read_file(input, graph_list, false);
+        }
+        else{
+            FileHandler::read_file(input,graph_adj,true);
+            FileHandler::read_file(input,graph_inc,true);
+            FileHandler::read_file(input,graph_list,true);
+        }
     }
-    else{
-        FileHandler::read_file(input,graph_adj,true);
-        FileHandler::read_file(input,graph_inc,true);
-        FileHandler::read_file(input,graph_list,true);
+    catch (...){
+        std::cout << "Exception occurred during reading the file." << std::endl;
+        throw std::runtime_error("Błąd wczytywania pliku");
     }
+    std::cout << "nie catch" << std::endl;
     singlefile(graph_inc,problem,algorithm,output,start_node,end_node);
     singlefile(graph_list,problem,algorithm,output,start_node,end_node);
     singlefile(graph_adj,problem,algorithm,output,start_node,end_node);
@@ -169,5 +183,6 @@ void Main::singlefile(Graph& graph, int problem, int algorithm, std::string outp
     result << ret << std::endl;
     result << "Czas w mikrosekundach: " << timer.result() << std::endl;
     std::cout << graph.toString() << std::endl << result.str() << std::endl;
+    std::cout << result.str() << std::endl;
     FileHandler::save_to_file(output,graph,result.str());
 }

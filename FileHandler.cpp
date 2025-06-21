@@ -7,7 +7,7 @@
 // reads input data from file
 void FileHandler::read_file(std::string &filename, Graph &graph, bool directed) {
     std::ifstream file(filename);
-    if (!file.is_open()) throw std::runtime_error("Failed to open the file.");
+    if (!file.is_open()) throw std::exception();
     std::string text;
     int index = 0;
     try{
@@ -16,9 +16,10 @@ void FileHandler::read_file(std::string &filename, Graph &graph, bool directed) 
                 std::istringstream iss(text);
                 int number_nodes, number_edges;
                 if(!(iss >> number_nodes >> number_edges)){
-                    throw std::runtime_error("Expected two values");
+                    throw std::exception();
                 }
-                if(number_nodes<=0) throw std::runtime_error("Incorrect number of nodes");
+                if(number_nodes<=0) throw std::exception();
+                if(number_edges<=0) throw std::exception();
                 graph.set_nodes(number_nodes);
                 graph.init(number_edges);
             }
@@ -26,7 +27,7 @@ void FileHandler::read_file(std::string &filename, Graph &graph, bool directed) 
                 std::istringstream iss(text);
                 int node_beg, node_end, wage;
                 if(!(iss >> node_beg >> node_end >> wage)){
-                    throw std::runtime_error("Expected three values");
+                    throw std::exception();
                 }
                 graph.add_edge(node_beg, node_end, wage, directed);
             }
@@ -34,7 +35,8 @@ void FileHandler::read_file(std::string &filename, Graph &graph, bool directed) 
         }
     }
     catch (std::exception &e){
-        throw std::runtime_error("Error occurred");
+        std::cout << "exception" << std::endl;
+        throw std::exception();
     }
 }
 
