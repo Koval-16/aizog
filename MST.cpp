@@ -1,6 +1,7 @@
 #include "MST.h"
 #include <iostream>
 #include <sstream>
+#include <climits>
 #include "Edge.h"
 #include "EdgeList.h"
 #include "Disjoint.h"

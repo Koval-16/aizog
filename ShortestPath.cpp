@@ -1,5 +1,5 @@
 #include "ShortestPath.h"
-#include "Math.h"
+#include <climits>
 #include "EdgeList.h"
 #include <iostream>
 #include <sstream>

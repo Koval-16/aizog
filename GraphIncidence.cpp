@@ -1,6 +1,7 @@
 #include "GraphIncidence.h"
 #include <iostream>
 #include <sstream>
+#include <climits>
 
 GraphIncidence::~GraphIncidence() {
     for (int i = 0; i < V; i++) {

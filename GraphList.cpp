@@ -1,6 +1,7 @@
 #include "GraphList.h"
 #include <iostream>
 #include <sstream>
+#include <climits>
 
 GraphList::~GraphList() {
     for (int i = 0; i < V; ++i) {

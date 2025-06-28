@@ -1,6 +1,7 @@
 #include "GraphAdjacency.h"
 #include <iostream>
 #include <sstream>
+#include <climits>
 
 GraphAdjacency::~GraphAdjacency() {
     for (int i = 0; i < V; i++) {
