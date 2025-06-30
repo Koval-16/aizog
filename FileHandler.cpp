@@ -15,7 +15,7 @@ void FileHandler::read_file(std::string &filename, Graph &graph, bool directed) 
             if(index==0){
                 std::istringstream iss(text);
                 int number_nodes, number_edges;
-                if(!(iss >> number_nodes >> number_edges)){
+                if(!(iss >> number_edges >> number_nodes)){
                     throw std::exception();
                 }
                 if(number_nodes<=0) throw std::exception();

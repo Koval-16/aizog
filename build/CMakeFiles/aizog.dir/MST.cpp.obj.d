@@ -150,5 +150,6 @@ CMakeFiles/aizog.dir/MST.cpp.obj: \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/istream.tcc \
  C:/Program\ Files/mingw64/include/c++/14.2.0/sstream \
  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/sstream.tcc \
+ C:/Program\ Files/mingw64/include/c++/14.2.0/climits \
  C:\Users\kuba\CLionProjects\aizog\Disjoint.h \
  C:\Users\kuba\CLionProjects\aizog\Heap.h

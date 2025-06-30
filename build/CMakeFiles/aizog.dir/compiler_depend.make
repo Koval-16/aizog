@@ -378,6 +378,7 @@ CMakeFiles/aizog.dir/GraphAdjacency.cpp.obj: C:/Users/kuba/CLionProjects/aizog/G
   C:/Program\ Files/mingw64/include/c++/14.2.0/bits/version.h \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cctype \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cerrno \
+  C:/Program\ Files/mingw64/include/c++/14.2.0/climits \
   C:/Program\ Files/mingw64/include/c++/14.2.0/clocale \
   C:/Program\ Files/mingw64/include/c++/14.2.0/concepts \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cstddef \
@@ -530,6 +531,7 @@ CMakeFiles/aizog.dir/GraphIncidence.cpp.obj: C:/Users/kuba/CLionProjects/aizog/G
   C:/Program\ Files/mingw64/include/c++/14.2.0/bits/version.h \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cctype \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cerrno \
+  C:/Program\ Files/mingw64/include/c++/14.2.0/climits \
   C:/Program\ Files/mingw64/include/c++/14.2.0/clocale \
   C:/Program\ Files/mingw64/include/c++/14.2.0/concepts \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cstddef \
@@ -682,6 +684,7 @@ CMakeFiles/aizog.dir/GraphList.cpp.obj: C:/Users/kuba/CLionProjects/aizog/GraphL
   C:/Program\ Files/mingw64/include/c++/14.2.0/bits/version.h \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cctype \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cerrno \
+  C:/Program\ Files/mingw64/include/c++/14.2.0/climits \
   C:/Program\ Files/mingw64/include/c++/14.2.0/clocale \
   C:/Program\ Files/mingw64/include/c++/14.2.0/concepts \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cstddef \
@@ -997,6 +1000,7 @@ CMakeFiles/aizog.dir/MST.cpp.obj: C:/Users/kuba/CLionProjects/aizog/MST.cpp \
   C:/Program\ Files/mingw64/include/c++/14.2.0/bits/version.h \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cctype \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cerrno \
+  C:/Program\ Files/mingw64/include/c++/14.2.0/climits \
   C:/Program\ Files/mingw64/include/c++/14.2.0/clocale \
   C:/Program\ Files/mingw64/include/c++/14.2.0/concepts \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cstddef \
@@ -1452,7 +1456,6 @@ CMakeFiles/aizog.dir/ShortestPath.cpp.obj: C:/Users/kuba/CLionProjects/aizog/Sho
   C:/Program\ Files/mingw64/include/c++/14.2.0/bits/range_access.h \
   C:/Program\ Files/mingw64/include/c++/14.2.0/bits/refwrap.h \
   C:/Program\ Files/mingw64/include/c++/14.2.0/bits/requires_hosted.h \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/bits/specfun.h \
   C:/Program\ Files/mingw64/include/c++/14.2.0/bits/sstream.tcc \
   C:/Program\ Files/mingw64/include/c++/14.2.0/bits/std_abs.h \
   C:/Program\ Files/mingw64/include/c++/14.2.0/bits/stl_algobase.h \
@@ -1472,8 +1475,8 @@ CMakeFiles/aizog.dir/ShortestPath.cpp.obj: C:/Users/kuba/CLionProjects/aizog/Sho
   C:/Program\ Files/mingw64/include/c++/14.2.0/bits/version.h \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cctype \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cerrno \
+  C:/Program\ Files/mingw64/include/c++/14.2.0/climits \
   C:/Program\ Files/mingw64/include/c++/14.2.0/clocale \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/cmath \
   C:/Program\ Files/mingw64/include/c++/14.2.0/concepts \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cstddef \
   C:/Program\ Files/mingw64/include/c++/14.2.0/cstdio \
@@ -1493,8 +1496,6 @@ CMakeFiles/aizog.dir/ShortestPath.cpp.obj: C:/Users/kuba/CLionProjects/aizog/Sho
   C:/Program\ Files/mingw64/include/c++/14.2.0/iosfwd \
   C:/Program\ Files/mingw64/include/c++/14.2.0/iostream \
   C:/Program\ Files/mingw64/include/c++/14.2.0/istream \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/limits \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/math.h \
   C:/Program\ Files/mingw64/include/c++/14.2.0/new \
   C:/Program\ Files/mingw64/include/c++/14.2.0/ostream \
   C:/Program\ Files/mingw64/include/c++/14.2.0/pstl/pstl_config.h \
@@ -1505,18 +1506,6 @@ CMakeFiles/aizog.dir/ShortestPath.cpp.obj: C:/Users/kuba/CLionProjects/aizog/Sho
   C:/Program\ Files/mingw64/include/c++/14.2.0/string \
   C:/Program\ Files/mingw64/include/c++/14.2.0/string_view \
   C:/Program\ Files/mingw64/include/c++/14.2.0/system_error \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/bessel_function.tcc \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/beta_function.tcc \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/ell_integral.tcc \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/exp_integral.tcc \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/gamma.tcc \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/hypergeometric.tcc \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/legendre_function.tcc \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/modified_bessel_func.tcc \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/poly_hermite.tcc \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/poly_laguerre.tcc \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/riemann_zeta.tcc \
-  C:/Program\ Files/mingw64/include/c++/14.2.0/tr1/special_function_util.h \
   C:/Program\ Files/mingw64/include/c++/14.2.0/tuple \
   C:/Program\ Files/mingw64/include/c++/14.2.0/type_traits \
   C:/Program\ Files/mingw64/include/c++/14.2.0/typeinfo \
@@ -1551,7 +1540,6 @@ CMakeFiles/aizog.dir/ShortestPath.cpp.obj: C:/Users/kuba/CLionProjects/aizog/Sho
   C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/limits.h \
   C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/locale.h \
   C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/malloc.h \
-  C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/math.h \
   C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/process.h \
   C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/pthread.h \
   C:/Program\ Files/mingw64/x86_64-w64-mingw32/include/pthread_compat.h \
@@ -1957,6 +1945,8 @@ C:/Users/kuba/CLionProjects/aizog/Graph.h:
 
 C:/Users/kuba/CLionProjects/aizog/GraphAdjacency.cpp:
 
+C:/Program\ Files/mingw64/include/c++/14.2.0/climits:
+
 C:/Users/kuba/CLionProjects/aizog/GraphAdjacency.h:
 
 C:/Users/kuba/CLionProjects/aizog/GraphIncidence.h:
@@ -2020,7 +2010,5 @@ C:/Users/kuba/CLionProjects/aizog/Main.h:
 C:/Users/kuba/CLionProjects/aizog/RandomHandler.h:
 
 C:/Users/kuba/CLionProjects/aizog/ShortestPath.h:
-
-C:/Program\ Files/mingw64/include/c++/14.2.0/math.h:
 
 C:/Users/kuba/CLionProjects/aizog/Timer.cpp:
